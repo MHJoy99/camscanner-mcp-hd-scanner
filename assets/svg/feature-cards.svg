@@ -1,0 +1,445 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080c15" />
+      <stop offset="50%" stop-color="#0c1220" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- Top Accent Bar Gradient -->
+    <linearGradient id="topBarGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="25%" stop-color="#06b6d4" />
+      <stop offset="50%" stop-color="#3b82f6" />
+      <stop offset="75%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#14b8a6" />
+    </linearGradient>
+
+    <!-- Ambient Glows -->
+    <radialGradient id="glowTopLeft" cx="15%" cy="20%" r="40%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="glowCenter" cx="50%" cy="50%" r="45%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="glowTopRight" cx="85%" cy="25%" r="40%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.10" />
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Card Background Gradient (Universal Base) -->
+    <linearGradient id="cardSurface" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.75" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.90" />
+    </linearGradient>
+
+    <!-- Filter for Card Drop Shadow -->
+    <filter id="cardShadow" x="-10%" y="-10%" width="125%" height="130%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#000000" flood-opacity="0.45" />
+    </filter>
+
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- Dot Pattern Overlay -->
+    <pattern id="dotGrid" x="0" y="0" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.1" fill="#334155" fill-opacity="0.28" />
+    </pattern>
+
+    <!-- ================= CARD 1: ZERO WATERMARK (Emerald) ================= -->
+    <linearGradient id="borderGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.65" />
+      <stop offset="50%" stop-color="#10b981" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#334155" stop-opacity="0.30" />
+    </linearGradient>
+    <linearGradient id="iconBg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#059669" stop-opacity="0.06" />
+    </linearGradient>
+    <radialGradient id="cardGlow1" cx="20%" cy="20%" r="50%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- ================= CARD 2: LOSSLESS HD 300 DPI (Cyan) ================= -->
+    <linearGradient id="borderGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.65" />
+      <stop offset="50%" stop-color="#06b6d4" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#334155" stop-opacity="0.30" />
+    </linearGradient>
+    <linearGradient id="iconBg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#0284c7" stop-opacity="0.06" />
+    </linearGradient>
+    <radialGradient id="cardGlow2" cx="20%" cy="20%" r="50%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- ================= CARD 3: BATCH MULTI-PAGE (Blue) ================= -->
+    <linearGradient id="borderGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.65" />
+      <stop offset="50%" stop-color="#3b82f6" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#334155" stop-opacity="0.30" />
+    </linearGradient>
+    <linearGradient id="iconBg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#1d4ed8" stop-opacity="0.06" />
+    </linearGradient>
+    <radialGradient id="cardGlow3" cx="20%" cy="20%" r="50%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- ================= CARD 4: SMART PERSPECTIVE WARP (Amber) ================= -->
+    <linearGradient id="borderGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.65" />
+      <stop offset="50%" stop-color="#f59e0b" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#334155" stop-opacity="0.30" />
+    </linearGradient>
+    <linearGradient id="iconBg4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#b45309" stop-opacity="0.06" />
+    </linearGradient>
+    <radialGradient id="cardGlow4" cx="20%" cy="20%" r="50%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- ================= CARD 5: MCP AGENT READY (Purple) ================= -->
+    <linearGradient id="borderGrad5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.65" />
+      <stop offset="50%" stop-color="#8b5cf6" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#334155" stop-opacity="0.30" />
+    </linearGradient>
+    <linearGradient id="iconBg5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#6d28d9" stop-opacity="0.06" />
+    </linearGradient>
+    <radialGradient id="cardGlow5" cx="20%" cy="20%" r="50%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- ================= CARD 6: 100% FREE & LOCAL (Teal) ================= -->
+    <linearGradient id="borderGrad6" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14b8a6" stop-opacity="0.65" />
+      <stop offset="50%" stop-color="#14b8a6" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#334155" stop-opacity="0.30" />
+    </linearGradient>
+    <linearGradient id="iconBg6" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14b8a6" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#0f766e" stop-opacity="0.06" />
+    </linearGradient>
+    <radialGradient id="cardGlow6" cx="20%" cy="20%" r="50%">
+      <stop offset="0%" stop-color="#14b8a6" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#14b8a6" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <style>
+    .font-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-weight: 700; }
+    .font-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+    .font-mono { font-family: 'SF Mono', Consolas, 'Liberation Mono', Menlo, Courier, monospace; }
+  </style>
+
+  <!-- Deep Canvas Base -->
+  <rect width="960" height="420" fill="url(#bgGradient)" />
+
+  <!-- Technical Dot Grid -->
+  <rect width="960" height="420" fill="url(#dotGrid)" />
+
+  <!-- Ambient Light Fields -->
+  <rect width="960" height="420" fill="url(#glowTopLeft)" />
+  <rect width="960" height="420" fill="url(#glowCenter)" />
+  <rect width="960" height="420" fill="url(#glowTopRight)" />
+
+  <!-- Top Decorative Accent Stroke -->
+  <rect x="0" y="0" width="960" height="2" fill="url(#topBarGrad)" opacity="0.9" />
+
+  <!-- ==================== HEADER BAR ==================== -->
+  <g transform="translate(30, 20)">
+    <!-- Pill Badge -->
+    <rect width="148" height="24" rx="12" fill="#10b981" fill-opacity="0.12" stroke="#10b981" stroke-width="1" stroke-opacity="0.35" />
+    <circle cx="12" cy="12" r="3.5" fill="#34d399" filter="url(#softGlow)" />
+    <circle cx="12" cy="12" r="2" fill="#ffffff" />
+    <text x="23" y="15.5" fill="#34d399" class="font-mono" font-size="9.5" font-weight="700" letter-spacing="0.08em">CORE CAPABILITIES</text>
+
+    <!-- Subtitle / Framing Title -->
+    <text x="162" y="16.5" fill="#94a3b8" class="font-body" font-size="12.5" font-weight="500">
+      Engineered for Mathematical Fidelity, Intelligent Deskew &amp; Air-Gapped Privacy
+    </text>
+
+    <!-- Status Text Right -->
+    <text x="900" y="16.5" fill="#64748b" class="font-mono" font-size="10" font-weight="600" text-anchor="end" letter-spacing="0.05em">
+      6 / 6 MODULES READY <tspan fill="#334155">&#x2022;</tspan> v1.0 HD PIPELINE
+    </text>
+  </g>
+
+  <!-- ==================== GRID OF 6 CARDS (2 ROWS x 3 COLS) ==================== -->
+
+  <!-- ========================================================================= -->
+  <!-- CARD 1: ZERO WATERMARK (Col 0, Row 0: x=30, y=64)                         -->
+  <!-- ========================================================================= -->
+  <g transform="translate(30, 64)" filter="url(#cardShadow)">
+    <!-- Card Base & Border -->
+    <rect width="286" height="158" rx="16" fill="url(#cardSurface)" stroke="url(#borderGrad1)" stroke-width="1.2" />
+    <circle cx="39" cy="39" r="64" fill="url(#cardGlow1)" pointer-events="none" />
+    <!-- Top inner glow line -->
+    <line x1="20" y1="1" x2="266" y2="1" stroke="#34d399" stroke-width="1.2" stroke-opacity="0.4" stroke-linecap="round" />
+
+    <!-- Icon Box -->
+    <rect x="18" y="18" width="42" height="42" rx="10" fill="url(#iconBg1)" stroke="#10b981" stroke-width="1" stroke-opacity="0.4" />
+    <!-- Icon 1: Pristine Document Sheet + Watermark Stamp Slash + Clean Sparkle -->
+    <g transform="translate(18, 18)">
+      <!-- Clean Document Sheet -->
+      <path d="M 12 9 H 23 L 29 15 V 32 H 12 Z" stroke="#34d399" stroke-width="1.6" fill="none" stroke-linejoin="round" />
+      <path d="M 23 9 V 15 H 29" stroke="#34d399" stroke-width="1.4" fill="none" stroke-linejoin="round" />
+      <!-- Prohibited Watermark Stamp (Stamp Outline + Slash) -->
+      <circle cx="20.5" cy="23.5" r="5" stroke="#ef4444" stroke-width="1.3" fill="none" stroke-opacity="0.85" />
+      <line x1="17" y1="20" x2="24" y2="27" stroke="#ef4444" stroke-width="1.4" stroke-linecap="round" stroke-opacity="0.9" />
+      <!-- Pristine Clean Sparkle -->
+      <path d="M 27 6 L 28 8.5 L 30.5 9.5 L 28 10.5 L 27 13 L 26 10.5 L 23.5 9.5 L 26 8.5 Z" fill="#34d399" />
+    </g>
+
+    <!-- Top Right Category Badge -->
+    <rect x="186" y="18" width="82" height="22" rx="11" fill="#10b981" fill-opacity="0.12" stroke="#10b981" stroke-width="1" stroke-opacity="0.3" />
+    <text x="227" y="32.5" fill="#34d399" class="font-mono" font-size="9" font-weight="700" text-anchor="middle" letter-spacing="0.04em">NO BRANDING</text>
+
+    <!-- Card Title -->
+    <text x="18" y="84" fill="#f8fafc" class="font-title" font-size="15" letter-spacing="-0.01em">Zero Watermark</text>
+
+    <!-- Card Description (Prompt exact text) -->
+    <text x="18" y="105" fill="#94a3b8" class="font-body" font-size="11.5" font-weight="400">Never stamps branding or logos</text>
+    <text x="18" y="122" fill="#94a3b8" class="font-body" font-size="11.5" font-weight="400">on your pages</text>
+
+    <!-- Bottom Rule & Micro Feature -->
+    <line x1="18" y1="134" x2="268" y2="134" stroke="#334155" stroke-opacity="0.45" stroke-width="0.75" />
+    <circle cx="23" cy="145.5" r="2.2" fill="#10b981" />
+    <text x="31" y="148.5" fill="#64748b" class="font-mono" font-size="9.5" font-weight="500">Pure Clean Export &#x2022; 0 Stamped Overlays</text>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- CARD 2: LOSSLESS HD 300 DPI (Col 1, Row 0: x=337, y=64)                   -->
+  <!-- ========================================================================= -->
+  <g transform="translate(337, 64)" filter="url(#cardShadow)">
+    <!-- Card Base & Border -->
+    <rect width="286" height="158" rx="16" fill="url(#cardSurface)" stroke="url(#borderGrad2)" stroke-width="1.2" />
+    <circle cx="39" cy="39" r="64" fill="url(#cardGlow2)" pointer-events="none" />
+    <!-- Top inner glow line -->
+    <line x1="20" y1="1" x2="266" y2="1" stroke="#22d3ee" stroke-width="1.2" stroke-opacity="0.4" stroke-linecap="round" />
+
+    <!-- Icon Box -->
+    <rect x="18" y="18" width="42" height="42" rx="10" fill="url(#iconBg2)" stroke="#06b6d4" stroke-width="1" stroke-opacity="0.4" />
+    <!-- Icon 2: Loupe Reticle + Crisp Mathematical Formula Sigma -->
+    <g transform="translate(18, 18)">
+      <!-- Precision Focus Reticle -->
+      <circle cx="21" cy="21" r="11" stroke="#22d3ee" stroke-width="1.5" fill="none" />
+      <circle cx="21" cy="21" r="14.5" stroke="#06b6d4" stroke-width="1" stroke-dasharray="2 3" fill="none" opacity="0.6" />
+      <!-- Crosshairs -->
+      <line x1="21" y1="6" x2="21" y2="9.5" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" />
+      <line x1="21" y1="32.5" x2="21" y2="36" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" />
+      <line x1="6" y1="21" x2="9.5" y2="21" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" />
+      <line x1="32.5" y1="21" x2="36" y2="21" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" />
+      <!-- Mathematical Sigma Formula Symbol -->
+      <path d="M 25 15.5 H 17 L 21 21 L 17 26.5 H 25" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+    </g>
+
+    <!-- Top Right Category Badge -->
+    <rect x="184" y="18" width="84" height="22" rx="11" fill="#06b6d4" fill-opacity="0.12" stroke="#06b6d4" stroke-width="1" stroke-opacity="0.3" />
+    <text x="226" y="32.5" fill="#22d3ee" class="font-mono" font-size="9" font-weight="700" text-anchor="middle" letter-spacing="0.04em">300 DPI NATIVE</text>
+
+    <!-- Card Title -->
+    <text x="18" y="84" fill="#f8fafc" class="font-title" font-size="15" letter-spacing="-0.01em">Lossless HD 300 DPI</text>
+
+    <!-- Card Description (Prompt exact text) -->
+    <text x="18" y="105" fill="#94a3b8" class="font-body" font-size="11.5" font-weight="400">Crystal-clear formula, mathematical</text>
+    <text x="18" y="122" fill="#94a3b8" class="font-body" font-size="11.5" font-weight="400">symbol &amp; handwriting clarity</text>
+
+    <!-- Bottom Rule & Micro Feature -->
+    <line x1="18" y1="134" x2="268" y2="134" stroke="#334155" stroke-opacity="0.45" stroke-width="0.75" />
+    <circle cx="23" cy="145.5" r="2.2" fill="#06b6d4" />
+    <text x="31" y="148.5" fill="#64748b" class="font-mono" font-size="9.5" font-weight="500">Formula Preserved &#x2022; Subscripts Razor-Sharp</text>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- CARD 3: BATCH MULTI-PAGE (Col 2, Row 0: x=644, y=64)                      -->
+  <!-- ========================================================================= -->
+  <g transform="translate(644, 64)" filter="url(#cardShadow)">
+    <!-- Card Base & Border -->
+    <rect width="286" height="158" rx="16" fill="url(#cardSurface)" stroke="url(#borderGrad3)" stroke-width="1.2" />
+    <circle cx="39" cy="39" r="64" fill="url(#cardGlow3)" pointer-events="none" />
+    <!-- Top inner glow line -->
+    <line x1="20" y1="1" x2="266" y2="1" stroke="#60a5fa" stroke-width="1.2" stroke-opacity="0.4" stroke-linecap="round" />
+
+    <!-- Icon Box -->
+    <rect x="18" y="18" width="42" height="42" rx="10" fill="url(#iconBg3)" stroke="#3b82f6" stroke-width="1" stroke-opacity="0.4" />
+    <!-- Icon 3: Multi-Layer Document Stack + High-Speed Fast Forward Chevrons -->
+    <g transform="translate(18, 18)">
+      <!-- Back Page -->
+      <rect x="16" y="8" width="16" height="20" rx="2" stroke="#3b82f6" stroke-width="1.2" fill="none" opacity="0.45" />
+      <!-- Middle Page -->
+      <rect x="12" y="12" width="16" height="20" rx="2" stroke="#60a5fa" stroke-width="1.4" fill="none" opacity="0.75" />
+      <!-- Front Document Page -->
+      <rect x="8" y="16" width="16" height="20" rx="2" stroke="#93c5fd" stroke-width="1.6" fill="#131e33" />
+      <line x1="12" y1="21" x2="18" y2="21" stroke="#60a5fa" stroke-width="1.3" stroke-linecap="round" />
+      <line x1="12" y1="25" x2="20" y2="25" stroke="#60a5fa" stroke-width="1.3" stroke-linecap="round" />
+      <line x1="12" y1="29" x2="17" y2="29" stroke="#60a5fa" stroke-width="1.3" stroke-linecap="round" />
+      <!-- Speed / Batch Arrows -->
+      <path d="M 27 21 L 31 24.5 L 27 28" stroke="#38bdf8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+      <path d="M 31 21 L 35 24.5 L 31 28" stroke="#38bdf8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.6" />
+    </g>
+
+    <!-- Top Right Category Badge -->
+    <rect x="182" y="18" width="86" height="22" rx="11" fill="#3b82f6" fill-opacity="0.12" stroke="#3b82f6" stroke-width="1" stroke-opacity="0.3" />
+    <text x="225" y="32.5" fill="#60a5fa" class="font-mono" font-size="9" font-weight="700" text-anchor="middle" letter-spacing="0.04em">1-500+ BATCH</text>
+
+    <!-- Card Title -->
+    <text x="18" y="84" fill="#f8fafc" class="font-title" font-size="15" letter-spacing="-0.01em">Batch Multi-Page</text>
+
+    <!-- Card Description (Prompt exact text) -->
+    <text x="18" y="105" fill="#94a3b8" class="font-body" font-size="11.5" font-weight="400">Process 1 to 500+ images in seconds</text>
+    <text x="18" y="122" fill="#94a3b8" class="font-body" font-size="11.5" font-weight="400">with high-speed throughput</text>
+
+    <!-- Bottom Rule & Micro Feature -->
+    <line x1="18" y1="134" x2="268" y2="134" stroke="#334155" stroke-opacity="0.45" stroke-width="0.75" />
+    <circle cx="23" cy="145.5" r="2.2" fill="#3b82f6" />
+    <text x="31" y="148.5" fill="#64748b" class="font-mono" font-size="9.5" font-weight="500">Multi-Threaded &#x2022; Instant PDF Assembly</text>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- CARD 4: SMART PERSPECTIVE WARP (Col 0, Row 1: x=30, y=238)                -->
+  <!-- ========================================================================= -->
+  <g transform="translate(30, 238)" filter="url(#cardShadow)">
+    <!-- Card Base & Border -->
+    <rect width="286" height="158" rx="16" fill="url(#cardSurface)" stroke="url(#borderGrad4)" stroke-width="1.2" />
+    <circle cx="39" cy="39" r="64" fill="url(#cardGlow4)" pointer-events="none" />
+    <!-- Top inner glow line -->
+    <line x1="20" y1="1" x2="266" y2="1" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.4" stroke-linecap="round" />
+
+    <!-- Icon Box -->
+    <rect x="18" y="18" width="42" height="42" rx="10" fill="url(#iconBg4)" stroke="#f59e0b" stroke-width="1" stroke-opacity="0.4" />
+    <!-- Icon 4: Perspective Warp Transformation + 4 Corner Target Anchors -->
+    <g transform="translate(18, 18)">
+      <!-- Angled / Skewed Desk Sheet (Before) -->
+      <polygon points="9,14 27,10 33,30 13,33" stroke="#f59e0b" stroke-width="1.3" stroke-dasharray="2 2" fill="none" opacity="0.45" />
+      <!-- Target Corner Anchors -->
+      <circle cx="9" cy="14" r="2" fill="#fbbf24" />
+      <circle cx="27" cy="10" r="2" fill="#fbbf24" />
+      <circle cx="33" cy="30" r="2" fill="#fbbf24" />
+      <circle cx="13" cy="33" r="2" fill="#fbbf24" />
+      <!-- Corrected True Flat Page (After) -->
+      <rect x="12" y="13" width="18" height="17" rx="1.5" stroke="#fef08a" stroke-width="1.6" fill="#1e180d" fill-opacity="0.5" />
+      <!-- Dynamic Scan Beam -->
+      <line x1="9" y1="21.5" x2="33" y2="21.5" stroke="#f59e0b" stroke-width="1.3" stroke-linecap="round" opacity="0.8" />
+    </g>
+
+    <!-- Top Right Category Badge -->
+    <rect x="180" y="18" width="88" height="22" rx="11" fill="#f59e0b" fill-opacity="0.12" stroke="#f59e0b" stroke-width="1" stroke-opacity="0.3" />
+    <text x="224" y="32.5" fill="#fbbf24" class="font-mono" font-size="9" font-weight="700" text-anchor="middle" letter-spacing="0.04em">AUTO DESKEW</text>
+
+    <!-- Card Title -->
+    <text x="18" y="84" fill="#f8fafc" class="font-title" font-size="15" letter-spacing="-0.01em">Smart Perspective Warp</text>
+
+    <!-- Card Description (Prompt exact text) -->
+    <text x="18" y="105" fill="#94a3b8" class="font-body" font-size="11.5" font-weight="400">Automatically detects paper borders</text>
+    <text x="18" y="122" fill="#94a3b8" class="font-body" font-size="11.5" font-weight="400">on desks/tables</text>
+
+    <!-- Bottom Rule & Micro Feature -->
+    <line x1="18" y1="134" x2="268" y2="134" stroke="#334155" stroke-opacity="0.45" stroke-width="0.75" />
+    <circle cx="23" cy="145.5" r="2.2" fill="#f59e0b" />
+    <text x="31" y="148.5" fill="#64748b" class="font-mono" font-size="9.5" font-weight="500">4-Corner Homography &#x2022; Auto Cropping</text>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- CARD 5: MCP AGENT READY (Col 1, Row 1: x=337, y=238)                      -->
+  <!-- ========================================================================= -->
+  <g transform="translate(337, 238)" filter="url(#cardShadow)">
+    <!-- Card Base & Border -->
+    <rect width="286" height="158" rx="16" fill="url(#cardSurface)" stroke="url(#borderGrad5)" stroke-width="1.2" />
+    <circle cx="39" cy="39" r="64" fill="url(#cardGlow5)" pointer-events="none" />
+    <!-- Top inner glow line -->
+    <line x1="20" y1="1" x2="266" y2="1" stroke="#c084fc" stroke-width="1.2" stroke-opacity="0.4" stroke-linecap="round" />
+
+    <!-- Icon Box -->
+    <rect x="18" y="18" width="42" height="42" rx="10" fill="url(#iconBg5)" stroke="#8b5cf6" stroke-width="1" stroke-opacity="0.4" />
+    <!-- Icon 5: Model Context Protocol Node Hub with Orbiting Agents -->
+    <g transform="translate(18, 18)">
+      <!-- Outer Orbit Ring -->
+      <circle cx="21" cy="21" r="14" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="2 3" fill="none" opacity="0.5" />
+      <!-- Connection Bus Lines -->
+      <line x1="21" y1="15" x2="21" y2="10" stroke="#c084fc" stroke-width="1.5" stroke-linecap="round" />
+      <line x1="16" y1="24" x2="11" y2="28" stroke="#c084fc" stroke-width="1.5" stroke-linecap="round" />
+      <line x1="26" y1="24" x2="31" y2="28" stroke="#c084fc" stroke-width="1.5" stroke-linecap="round" />
+      <!-- Central MCP Hub -->
+      <circle cx="21" cy="21" r="5" fill="#8b5cf6" stroke="#e9d5ff" stroke-width="1.6" />
+      <circle cx="21" cy="21" r="2" fill="#ffffff" />
+      <!-- Orbiting Agent Nodes: Claude, Kilo, Cursor -->
+      <circle cx="21" cy="9" r="2.8" fill="#c084fc" />
+      <circle cx="10" cy="29" r="2.8" fill="#a78bfa" />
+      <circle cx="32" cy="29" r="2.8" fill="#38bdf8" />
+    </g>
+
+    <!-- Top Right Category Badge -->
+    <rect x="186" y="18" width="82" height="22" rx="11" fill="#8b5cf6" fill-opacity="0.12" stroke="#8b5cf6" stroke-width="1" stroke-opacity="0.3" />
+    <text x="227" y="32.5" fill="#c084fc" class="font-mono" font-size="9" font-weight="700" text-anchor="middle" letter-spacing="0.04em">MCP NATIVE</text>
+
+    <!-- Card Title -->
+    <text x="18" y="84" fill="#f8fafc" class="font-title" font-size="15" letter-spacing="-0.01em">MCP Agent Ready</text>
+
+    <!-- Card Description (Prompt exact text) -->
+    <text x="18" y="105" fill="#94a3b8" class="font-body" font-size="11.5" font-weight="400">Full Model Context Protocol integration</text>
+    <text x="18" y="122" fill="#94a3b8" class="font-body" font-size="11.5" font-weight="400">for Claude, Kilo, Cursor</text>
+
+    <!-- Bottom Rule & Micro Feature -->
+    <line x1="18" y1="134" x2="268" y2="134" stroke="#334155" stroke-opacity="0.45" stroke-width="0.75" />
+    <circle cx="23" cy="145.5" r="2.2" fill="#8b5cf6" />
+    <text x="31" y="148.5" fill="#64748b" class="font-mono" font-size="9.5" font-weight="500">JSON-RPC 2.0 &#x2022; Tool Calling &amp; stdio</text>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- CARD 6: 100% FREE & LOCAL (Col 2, Row 1: x=644, y=238)                    -->
+  <!-- ========================================================================= -->
+  <g transform="translate(644, 238)" filter="url(#cardShadow)">
+    <!-- Card Base & Border -->
+    <rect width="286" height="158" rx="16" fill="url(#cardSurface)" stroke="url(#borderGrad6)" stroke-width="1.2" />
+    <circle cx="39" cy="39" r="64" fill="url(#cardGlow6)" pointer-events="none" />
+    <!-- Top inner glow line -->
+    <line x1="20" y1="1" x2="266" y2="1" stroke="#2dd4bf" stroke-width="1.2" stroke-opacity="0.4" stroke-linecap="round" />
+
+    <!-- Icon Box -->
+    <rect x="18" y="18" width="42" height="42" rx="10" fill="url(#iconBg6)" stroke="#14b8a6" stroke-width="1" stroke-opacity="0.4" />
+    <!-- Icon 6: Privacy Shield + Offline Hard Drive / Local Key -->
+    <g transform="translate(18, 18)">
+      <!-- Security Shield -->
+      <path d="M 21 8 L 31 12 V 20 C 31 27 21 33 21 33 C 21 33 11 27 11 20 V 12 Z" stroke="#2dd4bf" stroke-width="1.6" fill="none" stroke-linejoin="round" />
+      <!-- Inner Padlock -->
+      <rect x="17.5" y="19.5" width="7" height="6" rx="1.5" fill="#2dd4bf" />
+      <path d="M 19 19.5 V 17 C 19 15.6 19.9 14.5 21 14.5 C 22.1 14.5 23 15.6 23 17 V 19.5" stroke="#2dd4bf" stroke-width="1.3" fill="none" />
+      <circle cx="21" cy="22.5" r="0.9" fill="#0f172a" />
+    </g>
+
+    <!-- Top Right Category Badge -->
+    <rect x="184" y="18" width="84" height="22" rx="11" fill="#14b8a6" fill-opacity="0.12" stroke="#14b8a6" stroke-width="1" stroke-opacity="0.3" />
+    <text x="226" y="32.5" fill="#2dd4bf" class="font-mono" font-size="9" font-weight="700" text-anchor="middle" letter-spacing="0.04em">100% OFFLINE</text>
+
+    <!-- Card Title -->
+    <text x="18" y="84" fill="#f8fafc" class="font-title" font-size="15" letter-spacing="-0.01em">100% Free &amp; Local</text>
+
+    <!-- Card Description (Prompt exact text) -->
+    <text x="18" y="105" fill="#94a3b8" class="font-body" font-size="11.5" font-weight="400">Complete privacy, offline execution,</text>
+    <text x="18" y="122" fill="#94a3b8" class="font-body" font-size="11.5" font-weight="400">zero subscription fees</text>
+
+    <!-- Bottom Rule & Micro Feature -->
+    <line x1="18" y1="134" x2="268" y2="134" stroke="#334155" stroke-opacity="0.45" stroke-width="0.75" />
+    <circle cx="23" cy="145.5" r="2.2" fill="#14b8a6" />
+    <text x="31" y="148.5" fill="#64748b" class="font-mono" font-size="9.5" font-weight="500">Air-Gapped Engine &#x2022; Zero Telemetry</text>
+  </g>
+</svg>

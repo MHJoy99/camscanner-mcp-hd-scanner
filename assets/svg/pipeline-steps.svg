@@ -1,0 +1,406 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 320" width="1100" height="320">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080b12" />
+      <stop offset="50%" stop-color="#0e1322" />
+      <stop offset="100%" stop-color="#090d16" />
+    </linearGradient>
+
+    <!-- Card Background Gradient -->
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#192238" stop-opacity="0.88" />
+      <stop offset="100%" stop-color="#101726" stop-opacity="0.94" />
+    </linearGradient>
+
+    <!-- Glowing Filters -->
+    <filter id="glow-cyan" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <filter id="glow-connector" x="-20%" y="-40%" width="140%" height="180%">
+      <feGaussianBlur stdDeviation="3.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- Step Accent Gradients -->
+    <!-- Step 1: Cyan / Blue -->
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f2fe" />
+      <stop offset="100%" stop-color="#4facfe" />
+    </linearGradient>
+
+    <!-- Step 2: Electric Purple / Indigo -->
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#b982ff" />
+      <stop offset="100%" stop-color="#7028e4" />
+    </linearGradient>
+
+    <!-- Step 3: Amber / Neon Gold -->
+    <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffe600" />
+      <stop offset="100%" stop-color="#ff9100" />
+    </linearGradient>
+
+    <!-- Step 4: Emerald / Neon Green -->
+    <linearGradient id="grad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f5a0" />
+      <stop offset="100%" stop-color="#00d9e9" />
+    </linearGradient>
+
+    <!-- Step 5: Bright Magenta / Pink -->
+    <linearGradient id="grad5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff537e" />
+      <stop offset="100%" stop-color="#ff2a85" />
+    </linearGradient>
+
+    <!-- Connector Flow Gradients -->
+    <linearGradient id="conn1-2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f2fe" />
+      <stop offset="100%" stop-color="#b982ff" />
+    </linearGradient>
+    <linearGradient id="conn2-3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#b982ff" />
+      <stop offset="100%" stop-color="#ffe600" />
+    </linearGradient>
+    <linearGradient id="conn3-4" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffe600" />
+      <stop offset="100%" stop-color="#00f5a0" />
+    </linearGradient>
+    <linearGradient id="conn4-5" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f5a0" />
+      <stop offset="100%" stop-color="#ff537e" />
+    </linearGradient>
+
+    <!-- Card Top Glow Gradients -->
+    <linearGradient id="cardGlow1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f2fe" stop-opacity="0" />
+      <stop offset="50%" stop-color="#00f2fe" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#4facfe" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="cardGlow2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#b982ff" stop-opacity="0" />
+      <stop offset="50%" stop-color="#b982ff" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#7028e4" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="cardGlow3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffe600" stop-opacity="0" />
+      <stop offset="50%" stop-color="#ffe600" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#ff9100" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="cardGlow4" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f5a0" stop-opacity="0" />
+      <stop offset="50%" stop-color="#00f5a0" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#00d9e9" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="cardGlow5" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff537e" stop-opacity="0" />
+      <stop offset="50%" stop-color="#ff537e" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#ff2a85" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Background Grid Pattern -->
+    <pattern id="dotGrid" x="0" y="0" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="0.9" fill="#2d3a5a" fill-opacity="0.28" />
+    </pattern>
+
+    <!-- Corner accents marker / shape -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 1 2 L 7 5 L 1 8 z" fill="#4facfe" />
+    </marker>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1100" height="320" rx="16" fill="url(#bgGradient)" />
+  <rect width="1100" height="320" rx="16" fill="url(#dotGrid)" />
+  <rect width="1098" height="318" x="1" y="1" rx="15" fill="none" stroke="#232f48" stroke-width="1.2" />
+
+  <!-- Subtle Top Ambient Glow -->
+  <ellipse cx="550" cy="0" rx="450" ry="80" fill="#00f2fe" fill-opacity="0.04" />
+
+  <!-- Header / Title Bar -->
+  <g transform="translate(42, 22)">
+    <circle cx="6" cy="14" r="3.5" fill="#00f2fe" filter="url(#glow-cyan)" />
+    <text x="18" y="18" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="2" fill="#9db0d4">CAMSCANNER DOCUMENT PROCESSING PIPELINE</text>
+    <text x="510" y="18" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace" font-size="10.5" font-weight="500" letter-spacing="1" fill="#4d6185">AUTONOMOUS RESTORATION ENGINE • 5 STAGES</text>
+  </g>
+
+  <!-- Glowing Inter-Card Connectors (Center line at Y = 168) -->
+  <!-- Connector 1 -> 2 (218 to 248) -->
+  <g filter="url(#glow-connector)">
+    <line x1="218" y1="168" x2="248" y2="168" stroke="url(#conn1-2)" stroke-width="2.5" stroke-dasharray="4,2" />
+    <circle cx="233" cy="168" r="2" fill="#b982ff" />
+  </g>
+  <path d="M 244 165 L 248 168 L 244 171" fill="none" stroke="#b982ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Connector 2 -> 3 (438 to 468) -->
+  <g filter="url(#glow-connector)">
+    <line x1="438" y1="168" x2="468" y2="168" stroke="url(#conn2-3)" stroke-width="2.5" stroke-dasharray="4,2" />
+    <circle cx="453" cy="168" r="2" fill="#ffe600" />
+  </g>
+  <path d="M 464 165 L 468 168 L 464 171" fill="none" stroke="#ffe600" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Connector 3 -> 4 (658 to 688) -->
+  <g filter="url(#glow-connector)">
+    <line x1="658" y1="168" x2="688" y2="168" stroke="url(#conn3-4)" stroke-width="2.5" stroke-dasharray="4,2" />
+    <circle cx="673" cy="168" r="2" fill="#00f5a0" />
+  </g>
+  <path d="M 684 165 L 688 168 L 684 171" fill="none" stroke="#00f5a0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Connector 4 -> 5 (878 to 908) -->
+  <g filter="url(#glow-connector)">
+    <line x1="878" y1="168" x2="908" y2="168" stroke="url(#conn4-5)" stroke-width="2.5" stroke-dasharray="4,2" />
+    <circle cx="893" cy="168" r="2" fill="#ff537e" />
+  </g>
+  <path d="M 904 165 L 908 168 L 904 171" fill="none" stroke="#ff537e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+
+
+  <!-- ============================================================== -->
+  <!-- STEP 1: Edge & Contour Detection (X: 28, W: 190)               -->
+  <!-- ============================================================== -->
+  <g id="step1" transform="translate(28, 52)">
+    <!-- Card Container -->
+    <rect width="190" height="242" rx="14" fill="url(#cardBg)" stroke="#233454" stroke-width="1.2" />
+    <path d="M 14 0 L 176 0" stroke="url(#cardGlow1)" stroke-width="2.5" stroke-linecap="round" />
+
+    <!-- Neon Step Pill Badge -->
+    <rect x="14" y="14" width="70" height="22" rx="11" fill="#00f2fe" fill-opacity="0.12" stroke="#00f2fe" stroke-width="1.2" />
+    <circle cx="24" cy="25" r="3.5" fill="#00f2fe" />
+    <text x="33" y="29" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="800" fill="#00f2fe" letter-spacing="1">STEP 01</text>
+
+    <!-- Mini Icon Graphic: Perspective Warp Contour -->
+    <g transform="translate(138, 11)">
+      <rect width="36" height="28" rx="6" fill="#131e34" stroke="#253a60" stroke-width="1" />
+      <!-- Perspective quad -->
+      <polygon points="9,20 13,8 27,9 23,22" fill="#00f2fe" fill-opacity="0.16" stroke="#00f2fe" stroke-width="1.2" stroke-linejoin="round" />
+      <circle cx="9" cy="20" r="1.5" fill="#ffffff" />
+      <circle cx="13" cy="8" r="1.5" fill="#ffffff" />
+      <circle cx="27" cy="9" r="1.5" fill="#ffffff" />
+      <circle cx="23" cy="22" r="1.5" fill="#ffffff" />
+    </g>
+
+    <!-- Step Title -->
+    <text x="14" y="65" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#ffffff" letter-spacing="0.2">Edge &amp; Contour</text>
+    <text x="14" y="83" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#00f2fe" letter-spacing="0.2">Detection</text>
+
+    <!-- Divider Line -->
+    <line x1="14" y1="96" x2="176" y2="96" stroke="#202e48" stroke-width="1" />
+
+    <!-- Feature Tags -->
+    <rect x="14" y="105" width="162" height="24" rx="5" fill="#111a2c" stroke="#1d2e4e" stroke-width="1" />
+    <circle cx="24" cy="117" r="2" fill="#00f2fe" />
+    <text x="32" y="121" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="600" fill="#d2e3fc">Perspective auto-warp</text>
+
+    <rect x="14" y="135" width="162" height="24" rx="5" fill="#111a2c" stroke="#1d2e4e" stroke-width="1" />
+    <circle cx="24" cy="147" r="2" fill="#00f2fe" />
+    <text x="32" y="151" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="600" fill="#d2e3fc">Skew correction</text>
+
+    <!-- Description / Spec -->
+    <text x="14" y="180" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#8094b8" line-height="13">
+      <tspan x="14" dy="0">Detects 4-corner document</tspan>
+      <tspan x="14" dy="14">hull via convex polygons &amp;</tspan>
+      <tspan x="14" dy="14">unwarps planar distortion.</tspan>
+    </text>
+
+    <!-- Bottom Status Accent -->
+    <rect x="14" y="217" width="162" height="15" rx="3" fill="#00f2fe" fill-opacity="0.08" />
+    <text x="95" y="228" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace" font-size="8.5" font-weight="700" fill="#00f2fe" letter-spacing="0.5">GEOMETRIC RECTIFY</text>
+  </g>
+
+
+  <!-- ============================================================== -->
+  <!-- STEP 2: Illumination Normalization (X: 248, W: 190)             -->
+  <!-- ============================================================== -->
+  <g id="step2" transform="translate(248, 52)">
+    <!-- Card Container -->
+    <rect width="190" height="242" rx="14" fill="url(#cardBg)" stroke="#2b2d56" stroke-width="1.2" />
+    <path d="M 14 0 L 176 0" stroke="url(#cardGlow2)" stroke-width="2.5" stroke-linecap="round" />
+
+    <!-- Neon Step Pill Badge -->
+    <rect x="14" y="14" width="70" height="22" rx="11" fill="#b982ff" fill-opacity="0.14" stroke="#b982ff" stroke-width="1.2" />
+    <circle cx="24" cy="25" r="3.5" fill="#b982ff" />
+    <text x="33" y="29" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="800" fill="#b982ff" letter-spacing="1">STEP 02</text>
+
+    <!-- Mini Icon Graphic: Light / Shadow Morph -->
+    <g transform="translate(138, 11)">
+      <rect width="36" height="28" rx="6" fill="#1b1734" stroke="#36295c" stroke-width="1" />
+      <circle cx="18" cy="14" r="6" fill="#b982ff" fill-opacity="0.3" stroke="#b982ff" stroke-width="1.2" />
+      <path d="M 18 4 L 18 6 M 18 22 L 18 24 M 8 14 L 10 14 M 26 14 L 28 14" stroke="#b982ff" stroke-width="1.2" stroke-linecap="round" />
+    </g>
+
+    <!-- Step Title -->
+    <text x="14" y="65" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#ffffff" letter-spacing="0.2">Illumination</text>
+    <text x="14" y="83" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#b982ff" letter-spacing="0.2">Normalization</text>
+
+    <!-- Divider Line -->
+    <line x1="14" y1="96" x2="176" y2="96" stroke="#2b2a52" stroke-width="1" />
+
+    <!-- Feature Tags -->
+    <rect x="14" y="105" width="162" height="24" rx="5" fill="#18152e" stroke="#2f2652" stroke-width="1" />
+    <circle cx="24" cy="117" r="2" fill="#b982ff" />
+    <text x="32" y="121" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="600" fill="#e2d4fd">Morphological dilation</text>
+
+    <rect x="14" y="135" width="162" height="24" rx="5" fill="#18152e" stroke="#2f2652" stroke-width="1" />
+    <circle cx="24" cy="147" r="2" fill="#b982ff" />
+    <text x="32" y="151" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="600" fill="#e2d4fd">Blur &amp; shadow subtraction</text>
+
+    <!-- Description / Spec -->
+    <text x="14" y="180" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#8f8bb3">
+      <tspan x="14" dy="0">Models background lighting</tspan>
+      <tspan x="14" dy="14">gradients to erase uneven room</tspan>
+      <tspan x="14" dy="14">shadows &amp; phone creases.</tspan>
+    </text>
+
+    <!-- Bottom Status Accent -->
+    <rect x="14" y="217" width="162" height="15" rx="3" fill="#b982ff" fill-opacity="0.1" />
+    <text x="95" y="228" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace" font-size="8.5" font-weight="700" fill="#b982ff" letter-spacing="0.5">SHADOW FLATTENING</text>
+  </g>
+
+
+  <!-- ============================================================== -->
+  <!-- STEP 3: Magic Color Tone Curve (X: 468, W: 190)                 -->
+  <!-- ============================================================== -->
+  <g id="step3" transform="translate(468, 52)">
+    <!-- Card Container -->
+    <rect width="190" height="242" rx="14" fill="url(#cardBg)" stroke="#3f3718" stroke-width="1.2" />
+    <path d="M 14 0 L 176 0" stroke="url(#cardGlow3)" stroke-width="2.5" stroke-linecap="round" />
+
+    <!-- Neon Step Pill Badge -->
+    <rect x="14" y="14" width="70" height="22" rx="11" fill="#ffe600" fill-opacity="0.14" stroke="#ffe600" stroke-width="1.2" />
+    <circle cx="24" cy="25" r="3.5" fill="#ffe600" />
+    <text x="33" y="29" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="800" fill="#ffe600" letter-spacing="1">STEP 03</text>
+
+    <!-- Mini Icon Graphic: Tone Curve / Contrast S-Curve -->
+    <g transform="translate(138, 11)">
+      <rect width="36" height="28" rx="6" fill="#242010" stroke="#4a3e1a" stroke-width="1" />
+      <path d="M 7 21 C 15 21, 20 7, 29 7" fill="none" stroke="#ffe600" stroke-width="1.6" stroke-linecap="round" />
+      <circle cx="7" cy="21" r="1.5" fill="#ffe600" />
+      <circle cx="29" cy="7" r="1.5" fill="#ffe600" />
+    </g>
+
+    <!-- Step Title -->
+    <text x="14" y="65" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#ffffff" letter-spacing="0.2">Magic Color</text>
+    <text x="14" y="83" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#ffe600" letter-spacing="0.2">Tone Curve</text>
+
+    <!-- Divider Line -->
+    <line x1="14" y1="96" x2="176" y2="96" stroke="#363118" stroke-width="1" />
+
+    <!-- Feature Tags -->
+    <rect x="14" y="105" width="162" height="24" rx="5" fill="#1f1d11" stroke="#3c3716" stroke-width="1" />
+    <circle cx="24" cy="117" r="2" fill="#ffe600" />
+    <text x="32" y="121" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="600" fill="#fff5b8">Pure White #FFFFFF bg</text>
+
+    <rect x="14" y="135" width="162" height="24" rx="5" fill="#1f1d11" stroke="#3c3716" stroke-width="1" />
+    <circle cx="24" cy="147" r="2" fill="#ffe600" />
+    <text x="32" y="151" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="600" fill="#fff5b8">Contrast enhancement</text>
+
+    <!-- Description / Spec -->
+    <text x="14" y="180" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#aba47b">
+      <tspan x="14" dy="0">Clamps paper grain to pure</tspan>
+      <tspan x="14" dy="14">clean white while enriching text</tspan>
+      <tspan x="14" dy="14">blacks &amp; color ink vibrancy.</tspan>
+    </text>
+
+    <!-- Bottom Status Accent -->
+    <rect x="14" y="217" width="162" height="15" rx="3" fill="#ffe600" fill-opacity="0.12" />
+    <text x="95" y="228" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace" font-size="8.5" font-weight="700" fill="#ffe600" letter-spacing="0.5">DYNAMIC RANGE BOOST</text>
+  </g>
+
+
+  <!-- ============================================================== -->
+  <!-- STEP 4: Adaptive Unsharp Mask (X: 688, W: 190)                  -->
+  <!-- ============================================================== -->
+  <g id="step4" transform="translate(688, 52)">
+    <!-- Card Container -->
+    <rect width="190" height="242" rx="14" fill="url(#cardBg)" stroke="#1a3b37" stroke-width="1.2" />
+    <path d="M 14 0 L 176 0" stroke="url(#cardGlow4)" stroke-width="2.5" stroke-linecap="round" />
+
+    <!-- Neon Step Pill Badge -->
+    <rect x="14" y="14" width="70" height="22" rx="11" fill="#00f5a0" fill-opacity="0.14" stroke="#00f5a0" stroke-width="1.2" />
+    <circle cx="24" cy="25" r="3.5" fill="#00f5a0" />
+    <text x="33" y="29" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="800" fill="#00f5a0" letter-spacing="1">STEP 04</text>
+
+    <!-- Mini Icon Graphic: Crisp Focus Crosshair / Sharp Edges -->
+    <g transform="translate(138, 11)">
+      <rect width="36" height="28" rx="6" fill="#102521" stroke="#1d4d42" stroke-width="1" />
+      <circle cx="18" cy="14" r="7" fill="none" stroke="#00f5a0" stroke-width="1.2" stroke-dasharray="3,1.5" />
+      <circle cx="18" cy="14" r="2.2" fill="#00f5a0" />
+    </g>
+
+    <!-- Step Title -->
+    <text x="14" y="65" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#ffffff" letter-spacing="0.2">Adaptive</text>
+    <text x="14" y="83" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#00f5a0" letter-spacing="0.2">Unsharp Mask</text>
+
+    <!-- Divider Line -->
+    <line x1="14" y1="96" x2="176" y2="96" stroke="#183630" stroke-width="1" />
+
+    <!-- Feature Tags -->
+    <rect x="14" y="105" width="162" height="24" rx="5" fill="#0f221f" stroke="#1c4239" stroke-width="1" />
+    <circle cx="24" cy="117" r="2" fill="#00f5a0" />
+    <text x="32" y="121" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="600" fill="#b9fbe1">Fine text edge sharpening</text>
+
+    <rect x="14" y="135" width="162" height="24" rx="5" fill="#0f221f" stroke="#1c4239" stroke-width="1" />
+    <circle cx="24" cy="147" r="2" fill="#00f5a0" />
+    <text x="32" y="151" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="600" fill="#b9fbe1">Formulas &amp; diagrams clarity</text>
+
+    <!-- Description / Spec -->
+    <text x="14" y="180" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#80ab9c">
+      <tspan x="14" dy="0">High-pass frequency filtering</tspan>
+      <tspan x="14" dy="14">recovers stroke sharpness</tspan>
+      <tspan x="14" dy="14">without halo noise artifacts.</tspan>
+    </text>
+
+    <!-- Bottom Status Accent -->
+    <rect x="14" y="217" width="162" height="15" rx="3" fill="#00f5a0" fill-opacity="0.1" />
+    <text x="95" y="228" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace" font-size="8.5" font-weight="700" fill="#00f5a0" letter-spacing="0.5">SUB-PIXEL SHARPNESS</text>
+  </g>
+
+
+  <!-- ============================================================== -->
+  <!-- STEP 5: Multi-Page PDF Compiler (X: 908, W: 164)                -->
+  <!-- ============================================================== -->
+  <g id="step5" transform="translate(908, 52)">
+    <!-- Card Container -->
+    <rect width="164" height="242" rx="14" fill="url(#cardBg)" stroke="#3e2035" stroke-width="1.2" />
+    <path d="M 14 0 L 150 0" stroke="url(#cardGlow5)" stroke-width="2.5" stroke-linecap="round" />
+
+    <!-- Neon Step Pill Badge -->
+    <rect x="14" y="14" width="70" height="22" rx="11" fill="#ff537e" fill-opacity="0.14" stroke="#ff537e" stroke-width="1.2" />
+    <circle cx="24" cy="25" r="3.5" fill="#ff537e" />
+    <text x="33" y="29" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="800" fill="#ff537e" letter-spacing="1">STEP 05</text>
+
+    <!-- Mini Icon Graphic: Multi-page Stack -->
+    <g transform="translate(116, 11)">
+      <rect width="36" height="28" rx="6" fill="#241320" stroke="#501e3e" stroke-width="1" />
+      <rect x="9" y="6" width="14" height="16" rx="2" fill="none" stroke="#75305a" stroke-width="1" />
+      <rect x="13" y="9" width="14" height="16" rx="2" fill="#ff537e" fill-opacity="0.25" stroke="#ff537e" stroke-width="1.2" />
+    </g>
+
+    <!-- Step Title -->
+    <text x="14" y="65" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="700" fill="#ffffff" letter-spacing="0.1">Multi-Page PDF</text>
+    <text x="14" y="83" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="700" fill="#ff537e" letter-spacing="0.1">Compiler</text>
+
+    <!-- Divider Line -->
+    <line x1="14" y1="96" x2="150" y2="96" stroke="#361a2d" stroke-width="1" />
+
+    <!-- Feature Tags -->
+    <rect x="14" y="105" width="136" height="24" rx="5" fill="#22111d" stroke="#441a38" stroke-width="1" />
+    <circle cx="24" cy="117" r="2" fill="#ff537e" />
+    <text x="32" y="121" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" fill="#ffd1de">Lossless JPEG/PDF</text>
+
+    <rect x="14" y="135" width="136" height="24" rx="5" fill="#22111d" stroke="#441a38" stroke-width="1" />
+    <circle cx="24" cy="147" r="2" fill="#ff537e" />
+    <text x="32" y="151" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" fill="#ffd1de">Uniform metadata &amp; DPI</text>
+
+    <!-- Description / Spec -->
+    <text x="14" y="180" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#ad8394">
+      <tspan x="14" dy="0">Bundles standardized page</tspan>
+      <tspan x="14" dy="14">streams into publication-</tspan>
+      <tspan x="14" dy="14">ready compact PDF.</tspan>
+    </text>
+
+    <!-- Bottom Status Accent -->
+    <rect x="14" y="217" width="136" height="15" rx="3" fill="#ff537e" fill-opacity="0.12" />
+    <text x="82" y="228" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace" font-size="8.5" font-weight="700" fill="#ff537e" letter-spacing="0.5">FINAL BUNDLE EXPORT</text>
+  </g>
+</svg>

@@ -1,0 +1,346 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" width="900" height="420">
+  <defs>
+    <!-- Background Canvas Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080d1a" />
+      <stop offset="50%" stop-color="#0c1322" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+
+    <!-- Glowing Accent Gradients -->
+    <linearGradient id="titleAccentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="50%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+
+    <linearGradient id="cardBorderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.35" />
+      <stop offset="50%" stop-color="#10b981" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#334155" stop-opacity="0.3" />
+    </linearGradient>
+
+    <linearGradient id="cardBgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#131d31" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#0c1324" stop-opacity="0.95" />
+    </linearGradient>
+
+    <!-- Bar Gradients - Local Engine (Winners) -->
+    <linearGradient id="speedLocalGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="40%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#22d3ee" />
+    </linearGradient>
+
+    <linearGradient id="dpiLocalGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0891b2" />
+      <stop offset="50%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+
+    <linearGradient id="limitsLocalGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="50%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#818cf8" />
+    </linearGradient>
+
+    <!-- Bar Gradients - Cloud / Free Mobile App -->
+    <linearGradient id="speedCloudGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#475569" />
+      <stop offset="100%" stop-color="#f43f5e" />
+    </linearGradient>
+
+    <linearGradient id="dpiCloudGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#475569" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+
+    <linearGradient id="limitsCloudGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#475569" />
+      <stop offset="100%" stop-color="#fb7185" />
+    </linearGradient>
+
+    <!-- Ambient Glow Lights -->
+    <radialGradient id="glowTopLeft" cx="15%" cy="15%" r="45%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.14" />
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="glowCenterRight" cx="80%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Filters -->
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.45" />
+    </filter>
+
+    <!-- Technical Dot Grid Pattern -->
+    <pattern id="dotGrid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#334155" fill-opacity="0.25" />
+    </pattern>
+  </defs>
+
+  <style>
+    .font-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+    .font-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+    .font-mono { font-family: 'SF Mono', Consolas, 'Cascadia Code', 'Courier New', monospace; }
+  </style>
+
+  <!-- Deep Background Layer -->
+  <rect width="900" height="420" fill="url(#bgGrad)" />
+  <rect width="900" height="420" fill="url(#dotGrid)" />
+
+  <!-- Ambient Light Orbs -->
+  <rect width="900" height="420" fill="url(#glowTopLeft)" pointer-events="none" />
+  <rect width="900" height="420" fill="url(#glowCenterRight)" pointer-events="none" />
+
+  <!-- ==================== HEADER SECTION ==================== -->
+  <!-- Top Category Tag -->
+  <g transform="translate(32, 14)">
+    <rect width="168" height="20" rx="10" fill="#064e3b" fill-opacity="0.4" stroke="#10b981" stroke-opacity="0.4" stroke-width="1" />
+    <circle cx="12" cy="10" r="3.5" fill="#10b981" filter="url(#softGlow)" />
+    <text x="22" y="14" class="font-mono" font-size="9" font-weight="700" fill="#34d399" letter-spacing="1">BENCHMARK REPORT</text>
+  </g>
+
+  <!-- Main Headline -->
+  <text x="32" y="54" class="font-title">
+    <tspan font-size="19" font-weight="800" fill="#f8fafc">Engine Benchmark: </tspan>
+    <tspan font-size="19" font-weight="800" fill="url(#titleAccentGrad)">Local Python Engine</tspan>
+    <tspan font-size="17" font-weight="400" fill="#64748b"> vs </tspan>
+    <tspan font-size="18" font-weight="700" fill="#94a3b8">Cloud Mobile App</tspan>
+  </text>
+
+  <!-- Top Legend Badges -->
+  <g transform="translate(562, 22)">
+    <!-- Local Engine Pill -->
+    <rect width="146" height="24" rx="12" fill="#064e3b" fill-opacity="0.35" stroke="#10b981" stroke-opacity="0.4" stroke-width="1" />
+    <circle cx="13" cy="12" r="4" fill="#10b981" filter="url(#softGlow)" />
+    <text x="24" y="16" class="font-body" font-size="11" font-weight="700" fill="#34d399">Local Python Engine</text>
+
+    <!-- Cloud App Pill -->
+    <rect x="156" width="150" height="24" rx="12" fill="#1e293b" fill-opacity="0.6" stroke="#475569" stroke-opacity="0.4" stroke-width="1" />
+    <circle cx="169" cy="12" r="4" fill="#f43f5e" />
+    <text x="180" y="16" class="font-body" font-size="11" font-weight="600" fill="#94a3b8">Cloud Mobile App</text>
+  </g>
+
+  <!-- ==================== BENCHMARK CARD 1: SPEED ==================== -->
+  <g transform="translate(32, 68)" filter="url(#cardShadow)">
+    <!-- Card Frame -->
+    <rect width="836" height="94" rx="12" fill="url(#cardBgGrad)" stroke="url(#cardBorderGrad)" stroke-width="1.2" />
+
+    <!-- Left Metric Info Area -->
+    <!-- Icon Container -->
+    <rect x="16" y="14" width="36" height="36" rx="8" fill="#10b981" fill-opacity="0.12" stroke="#10b981" stroke-opacity="0.3" stroke-width="1" />
+    <!-- Lightning Icon -->
+    <path d="M35 22L27 32h6l-2 10 9-11h-6l2-9z" fill="url(#speedLocalGrad)" stroke="#10b981" stroke-width="0.8" stroke-linejoin="round" />
+
+    <text x="62" y="29" class="font-title" font-size="14.5" font-weight="700" fill="#f8fafc">Processing Speed</text>
+    <text x="62" y="44" class="font-body" font-size="11" font-weight="400" fill="#94a3b8">Batch of 20 color pages</text>
+
+    <!-- Advantage Badge -->
+    <rect x="16" y="58" width="168" height="22" rx="6" fill="#10b981" fill-opacity="0.14" stroke="#10b981" stroke-opacity="0.4" stroke-width="1" />
+    <text x="100" y="73" text-anchor="middle" class="font-mono" font-size="9.5" font-weight="700" fill="#34d399">⚡ ~15x FASTER THROUGHPUT</text>
+
+    <!-- Vertical Technical Divider -->
+    <line x1="208" y1="14" x2="208" y2="80" stroke="#334155" stroke-opacity="0.5" stroke-dasharray="2 2" stroke-width="1" />
+
+    <!-- Right Side: Graphic Bars & Numeric Readouts -->
+    <!-- Row 1: Local Engine -->
+    <circle cx="226" cy="30" r="3.5" fill="#10b981" />
+    <text x="236" y="34" class="font-body" font-size="11.5" font-weight="600" fill="#e2e8f0">Local Engine</text>
+
+    <!-- Bar Track -->
+    <rect x="330" y="21" width="330" height="18" rx="5" fill="#0b1120" stroke="#1e293b" stroke-width="1" />
+    <!-- Ticks -->
+    <line x1="412" y1="21" x2="412" y2="39" stroke="#1e293b" stroke-width="1" />
+    <line x1="495" y1="21" x2="495" y2="39" stroke="#1e293b" stroke-width="1" />
+    <line x1="577" y1="21" x2="577" y2="39" stroke="#1e293b" stroke-width="1" />
+    <!-- Filled Bar (3.2s / Instant execution speed representation - 94% fill) -->
+    <rect x="330" y="21" width="314" height="18" rx="5" fill="url(#speedLocalGrad)" filter="url(#softGlow)" />
+    <line x1="332" y1="23" x2="642" y2="23" stroke="#ffffff" stroke-opacity="0.3" stroke-width="1" />
+
+    <!-- Value Metric -->
+    <text x="676" y="34" class="font-mono">
+      <tspan font-size="13.5" font-weight="800" fill="#34d399">~3.2s</tspan>
+      <tspan font-size="11" font-weight="500" fill="#94a3b8"> (6.25 pgs/s)</tspan>
+    </text>
+
+    <!-- Row 2: Cloud Mobile App -->
+    <circle cx="226" cy="67" r="3.5" fill="#f43f5e" />
+    <text x="236" y="71" class="font-body" font-size="11.5" font-weight="500" fill="#94a3b8">Cloud Mobile App</text>
+
+    <!-- Bar Track -->
+    <rect x="330" y="58" width="330" height="18" rx="5" fill="#0b1120" stroke="#1e293b" stroke-width="1" />
+    <line x1="412" y1="58" x2="412" y2="76" stroke="#1e293b" stroke-width="1" />
+    <line x1="495" y1="58" x2="495" y2="76" stroke="#1e293b" stroke-width="1" />
+    <line x1="577" y1="58" x2="577" y2="76" stroke="#1e293b" stroke-width="1" />
+    <!-- Filled Bar (45-60s throughput representation - 14% fill) -->
+    <rect x="330" y="58" width="46" height="18" rx="5" fill="url(#speedCloudGrad)" />
+
+    <!-- Value Metric -->
+    <text x="676" y="71" class="font-mono">
+      <tspan font-size="13" font-weight="700" fill="#fb7185">~45–60s</tspan>
+      <tspan font-size="11" font-weight="500" fill="#64748b"> (Queue Lag)</tspan>
+    </text>
+  </g>
+
+  <!-- ==================== BENCHMARK CARD 2: RESOLUTION / DPI ==================== -->
+  <g transform="translate(32, 172)" filter="url(#cardShadow)">
+    <!-- Card Frame -->
+    <rect width="836" height="94" rx="12" fill="url(#cardBgGrad)" stroke="url(#cardBorderGrad)" stroke-width="1.2" />
+
+    <!-- Left Metric Info Area -->
+    <!-- Icon Container -->
+    <rect x="16" y="14" width="36" height="36" rx="8" fill="#06b6d4" fill-opacity="0.12" stroke="#06b6d4" stroke-opacity="0.3" stroke-width="1" />
+    <!-- Resolution / Aperture Target Icon -->
+    <circle cx="34" cy="32" r="10" fill="none" stroke="#22d3ee" stroke-width="1.5" />
+    <circle cx="34" cy="32" r="4.5" fill="#0891b2" stroke="#38bdf8" stroke-width="1" />
+    <line x1="34" y1="18" x2="34" y2="23" stroke="#22d3ee" stroke-width="1.5" />
+    <line x1="34" y1="41" x2="34" y2="46" stroke="#22d3ee" stroke-width="1.5" />
+    <line x1="20" y1="32" x2="25" y2="32" stroke="#22d3ee" stroke-width="1.5" />
+    <line x1="43" y1="32" x2="48" y2="32" stroke="#22d3ee" stroke-width="1.5" />
+
+    <text x="62" y="29" class="font-title" font-size="14.5" font-weight="700" fill="#f8fafc">Resolution &amp; Quality</text>
+    <text x="62" y="44" class="font-body" font-size="11" font-weight="400" fill="#94a3b8">Image sharpness &amp; clarity</text>
+
+    <!-- Advantage Badge -->
+    <rect x="16" y="58" width="168" height="22" rx="6" fill="#0891b2" fill-opacity="0.16" stroke="#06b6d4" stroke-opacity="0.4" stroke-width="1" />
+    <text x="100" y="73" text-anchor="middle" class="font-mono" font-size="9.5" font-weight="700" fill="#38bdf8">💎 300 DPI LOSSLESS RAW</text>
+
+    <!-- Vertical Technical Divider -->
+    <line x1="208" y1="14" x2="208" y2="80" stroke="#334155" stroke-opacity="0.5" stroke-dasharray="2 2" stroke-width="1" />
+
+    <!-- Right Side: Graphic Bars & Numeric Readouts -->
+    <!-- Row 1: Local Engine -->
+    <circle cx="226" cy="30" r="3.5" fill="#06b6d4" />
+    <text x="236" y="34" class="font-body" font-size="11.5" font-weight="600" fill="#e2e8f0">Local Engine</text>
+
+    <!-- Bar Track -->
+    <rect x="330" y="21" width="330" height="18" rx="5" fill="#0b1120" stroke="#1e293b" stroke-width="1" />
+    <line x1="412" y1="21" x2="412" y2="39" stroke="#1e293b" stroke-width="1" />
+    <line x1="495" y1="21" x2="495" y2="39" stroke="#1e293b" stroke-width="1" />
+    <line x1="577" y1="21" x2="577" y2="39" stroke="#1e293b" stroke-width="1" />
+    <!-- Filled Bar (300 DPI - 100% full bar) -->
+    <rect x="330" y="21" width="330" height="18" rx="5" fill="url(#dpiLocalGrad)" filter="url(#softGlow)" />
+    <line x1="332" y1="23" x2="658" y2="23" stroke="#ffffff" stroke-opacity="0.3" stroke-width="1" />
+
+    <!-- Value Metric -->
+    <text x="676" y="34" class="font-mono">
+      <tspan font-size="13.5" font-weight="800" fill="#38bdf8">300 DPI</tspan>
+      <tspan font-size="11" font-weight="500" fill="#94a3b8"> Lossless</tspan>
+    </text>
+
+    <!-- Row 2: Free App -->
+    <circle cx="226" cy="67" r="3.5" fill="#f59e0b" />
+    <text x="236" y="71" class="font-body" font-size="11.5" font-weight="500" fill="#94a3b8">Free Mobile App</text>
+
+    <!-- Bar Track -->
+    <rect x="330" y="58" width="330" height="18" rx="5" fill="#0b1120" stroke="#1e293b" stroke-width="1" />
+    <line x1="412" y1="58" x2="412" y2="76" stroke="#1e293b" stroke-width="1" />
+    <line x1="495" y1="58" x2="495" y2="76" stroke="#1e293b" stroke-width="1" />
+    <line x1="577" y1="58" x2="577" y2="76" stroke="#1e293b" stroke-width="1" />
+    <!-- Filled Bar (72-150 DPI - 40% fill) -->
+    <rect x="330" y="58" width="132" height="18" rx="5" fill="url(#dpiCloudGrad)" />
+
+    <!-- Value Metric -->
+    <text x="676" y="71" class="font-mono">
+      <tspan font-size="13" font-weight="700" fill="#fbbf24">72–150 DPI</tspan>
+      <tspan font-size="11" font-weight="500" fill="#64748b"> Compressed</tspan>
+    </text>
+  </g>
+
+  <!-- ==================== BENCHMARK CARD 3: FILE LIMITS ==================== -->
+  <g transform="translate(32, 276)" filter="url(#cardShadow)">
+    <!-- Card Frame -->
+    <rect width="836" height="94" rx="12" fill="url(#cardBgGrad)" stroke="url(#cardBorderGrad)" stroke-width="1.2" />
+
+    <!-- Left Metric Info Area -->
+    <!-- Icon Container -->
+    <rect x="16" y="14" width="36" height="36" rx="8" fill="#6366f1" fill-opacity="0.12" stroke="#6366f1" stroke-opacity="0.3" stroke-width="1" />
+    <!-- Infinity / Unlocked Icon -->
+    <path d="M25 32c0-3.3 2.7-6 6-6 3.1 0 5.2 2.3 7 4.2 1.8-1.9 3.9-4.2 7-4.2 3.3 0 6 2.7 6 6s-2.7 6-6 6c-3.1 0-5.2-2.3-7-4.2-1.8 1.9-3.9 4.2-7 4.2-3.3 0-6-2.7-6-6z" fill="none" stroke="#818cf8" stroke-width="1.8" />
+
+    <text x="62" y="29" class="font-title" font-size="14.5" font-weight="700" fill="#f8fafc">Output &amp; Page Limits</text>
+    <text x="62" y="44" class="font-body" font-size="11" font-weight="400" fill="#94a3b8">Volume restrictions &amp; watermarks</text>
+
+    <!-- Advantage Badge -->
+    <rect x="16" y="58" width="168" height="22" rx="6" fill="#4338ca" fill-opacity="0.2" stroke="#6366f1" stroke-opacity="0.4" stroke-width="1" />
+    <text x="100" y="73" text-anchor="middle" class="font-mono" font-size="9.5" font-weight="700" fill="#a78bfa">♾️ UNRESTRICTED &amp; PRIVATE</text>
+
+    <!-- Vertical Technical Divider -->
+    <line x1="208" y1="14" x2="208" y2="80" stroke="#334155" stroke-opacity="0.5" stroke-dasharray="2 2" stroke-width="1" />
+
+    <!-- Right Side: Graphic Bars & Numeric Readouts -->
+    <!-- Row 1: Local Engine -->
+    <circle cx="226" cy="30" r="3.5" fill="#818cf8" />
+    <text x="236" y="34" class="font-body" font-size="11.5" font-weight="600" fill="#e2e8f0">Local Engine</text>
+
+    <!-- Bar Track -->
+    <rect x="330" y="21" width="330" height="18" rx="5" fill="#0b1120" stroke="#1e293b" stroke-width="1" />
+    <line x1="412" y1="21" x2="412" y2="39" stroke="#1e293b" stroke-width="1" />
+    <line x1="495" y1="21" x2="495" y2="39" stroke="#1e293b" stroke-width="1" />
+    <line x1="577" y1="21" x2="577" y2="39" stroke="#1e293b" stroke-width="1" />
+    <!-- Filled Bar (Unlimited capacity - 100% full bar) -->
+    <rect x="330" y="21" width="330" height="18" rx="5" fill="url(#limitsLocalGrad)" filter="url(#softGlow)" />
+    <line x1="332" y1="23" x2="658" y2="23" stroke="#ffffff" stroke-opacity="0.3" stroke-width="1" />
+
+    <!-- Value Metric -->
+    <text x="676" y="34" class="font-mono">
+      <tspan font-size="13.5" font-weight="800" fill="#a78bfa">Unlimited</tspan>
+      <tspan font-size="11" font-weight="500" fill="#94a3b8"> (No Quotas)</tspan>
+    </text>
+
+    <!-- Row 2: Free App -->
+    <circle cx="226" cy="67" r="3.5" fill="#f43f5e" />
+    <text x="236" y="71" class="font-body" font-size="11.5" font-weight="500" fill="#94a3b8">Free Mobile App</text>
+
+    <!-- Bar Track -->
+    <rect x="330" y="58" width="330" height="18" rx="5" fill="#0b1120" stroke="#1e293b" stroke-width="1" />
+    <line x1="412" y1="58" x2="412" y2="76" stroke="#1e293b" stroke-width="1" />
+    <line x1="495" y1="58" x2="495" y2="76" stroke="#1e293b" stroke-width="1" />
+    <line x1="577" y1="58" x2="577" y2="76" stroke="#1e293b" stroke-width="1" />
+    <!-- Filled Bar (Limited / Paywalls - 20% fill) -->
+    <rect x="330" y="58" width="66" height="18" rx="5" fill="url(#limitsCloudGrad)" />
+
+    <!-- Value Metric -->
+    <text x="676" y="71" class="font-mono">
+      <tspan font-size="13" font-weight="700" fill="#fb7185">Limited</tspan>
+      <tspan font-size="11" font-weight="500" fill="#64748b"> (Pages / Ads)</tspan>
+    </text>
+  </g>
+
+  <!-- ==================== FOOTER SUMMARY BAR ==================== -->
+  <g transform="translate(32, 380)">
+    <!-- Pill Bar Container -->
+    <rect width="836" height="28" rx="7" fill="#0d1527" stroke="#1e293b" stroke-width="1" />
+
+    <!-- Feature Item 1: Privacy -->
+    <g transform="translate(24, 6)">
+      <!-- Mini Shield Icon -->
+      <path d="M7 2L2 4v4c0 3.3 2.1 6.4 5 7.2 2.9-.8 5-3.9 5-7.2V4L7 2z" fill="none" stroke="#10b981" stroke-width="1.2" />
+      <text x="18" y="11" class="font-body" font-size="10.5" font-weight="600" fill="#cbd5e1">100% Local Processing &amp; Privacy</text>
+    </g>
+
+    <!-- Feature Item 2: Zero Cloud Lag -->
+    <g transform="translate(315, 6)">
+      <!-- Mini Lightning Icon -->
+      <path d="M7 1L3 8h4l-1 6 6-7H8l2-7z" fill="none" stroke="#06b6d4" stroke-width="1.2" />
+      <text x="18" y="11" class="font-body" font-size="10.5" font-weight="600" fill="#cbd5e1">Zero Cloud Latency or Bandwidth Caps</text>
+    </g>
+
+    <!-- Feature Item 3: Multi-Page Export -->
+    <g transform="translate(615, 6)">
+      <!-- Mini Document / Check Icon -->
+      <rect x="3" y="1" width="10" height="13" rx="1.5" fill="none" stroke="#818cf8" stroke-width="1.2" />
+      <path d="M6 7l1.5 1.5 3-3" fill="none" stroke="#818cf8" stroke-width="1.2" stroke-linecap="round" />
+      <text x="18" y="11" class="font-body" font-size="10.5" font-weight="600" fill="#cbd5e1">No Watermarks • Lossless PDF Export</text>
+    </g>
+  </g>
+</svg>

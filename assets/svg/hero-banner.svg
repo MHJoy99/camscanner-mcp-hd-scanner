@@ -1,0 +1,315 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="45%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+
+    <!-- Accent Glow Gradients -->
+    <linearGradient id="primaryAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="50%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+
+    <linearGradient id="badgeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.1" />
+    </linearGradient>
+
+    <linearGradient id="scannerBeamGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0" />
+      <stop offset="25%" stop-color="#10b981" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#22d3ee" stop-opacity="1" />
+      <stop offset="75%" stop-color="#3b82f6" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0" />
+    </linearGradient>
+
+    <linearGradient id="scanLightArea" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.32" />
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0" />
+    </linearGradient>
+
+    <linearGradient id="docCardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.95" />
+    </linearGradient>
+
+    <linearGradient id="featureCardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.85" />
+    </linearGradient>
+
+    <linearGradient id="sparkleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+
+    <!-- Radial Glows -->
+    <radialGradient id="glowLeft" cx="20%" cy="30%" r="55%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="glowRight" cx="75%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.22" />
+      <stop offset="60%" stop-color="#3b82f6" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#1e293b" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Glow & Shadow Filters -->
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <filter id="intenseGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="10" result="blur1" />
+      <feGaussianBlur stdDeviation="4" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur1" />
+        <feMergeNode in="blur2" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="cardShadow" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#000000" flood-opacity="0.55" />
+    </filter>
+
+    <!-- Dot Pattern -->
+    <pattern id="gridDots" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="#334155" fill-opacity="0.3" />
+    </pattern>
+  </defs>
+
+  <style>
+    .font-title { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-weight: 800; }
+    .font-body { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+    .font-mono { font-family: 'SF Mono', Consolas, 'Courier New', monospace; }
+  </style>
+
+  <!-- Deep Canvas Base -->
+  <rect width="1200" height="400" fill="url(#bgGradient)" />
+
+  <!-- Technical Grid Overlay -->
+  <rect width="1200" height="400" fill="url(#gridDots)" />
+
+  <!-- Atmospheric Glow Accents -->
+  <rect width="1200" height="400" fill="url(#glowLeft)" />
+  <circle cx="920" cy="200" r="280" fill="url(#glowRight)" />
+
+  <!-- Top Border Gradient Glow Line -->
+  <rect x="0" y="0" width="1200" height="2" fill="url(#primaryAccent)" filter="url(#softGlow)" opacity="0.85" />
+
+  <!-- Decorative Circuit / MCP Connection Lines in Background -->
+  <g opacity="0.18" stroke="#38bdf8" stroke-width="1.5" fill="none">
+    <path d="M 680 90 L 760 90 L 800 140" stroke-dasharray="4 4" />
+    <path d="M 650 310 L 740 310 L 780 270" stroke-dasharray="4 4" />
+    <circle cx="680" cy="90" r="3" fill="#38bdf8" />
+    <circle cx="800" cy="140" r="3" fill="#38bdf8" />
+    <circle cx="650" cy="310" r="3" fill="#38bdf8" />
+    <circle cx="780" cy="270" r="3" fill="#38bdf8" />
+  </g>
+
+  <!-- ==================== LEFT COLUMN: CONTENT ==================== -->
+
+  <!-- Protocol / Status Pill Badge -->
+  <g transform="translate(70, 56)">
+    <rect width="268" height="32" rx="16" fill="url(#badgeGrad)" stroke="#10b981" stroke-width="1" stroke-opacity="0.4" />
+    <circle cx="16" cy="16" r="4.5" fill="#10b981" filter="url(#softGlow)" />
+    <circle cx="16" cy="16" r="2.5" fill="#ecfdf5" />
+    <text x="30" y="21" fill="#34d399" class="font-mono" font-size="11.5" font-weight="700" letter-spacing="0.08em">MCP PROTOCOL • HD ENGINE</text>
+  </g>
+
+  <!-- Main Headline -->
+  <g transform="translate(70, 142)">
+    <text class="font-title" font-size="40" fill="#f8fafc" letter-spacing="-0.03em">
+      CamScanner <tspan fill="url(#primaryAccent)">MCP</tspan> &amp; HD Scanner
+    </text>
+  </g>
+
+  <!-- Tagline -->
+  <g transform="translate(70, 184)">
+    <text class="font-body" font-size="15" font-weight="500" fill="#94a3b8" letter-spacing="0.01em">
+      Unlimited Lossless Scans <tspan fill="#38bdf8">•</tspan> Zero Watermark <tspan fill="#38bdf8">•</tspan> Full Automation via Model Context Protocol
+    </text>
+  </g>
+
+  <!-- Feature Highlights / Capability Cards -->
+  <g transform="translate(70, 240)">
+    <!-- Pill 1: Auto Scan -->
+    <g transform="translate(0, 0)">
+      <rect width="146" height="66" rx="12" fill="url(#featureCardGrad)" stroke="#334155" stroke-width="1" />
+      <rect x="12" y="16" width="34" height="34" rx="8" fill="#10b981" fill-opacity="0.12" />
+      <!-- Document Scan Icon -->
+      <path d="M 23 25 L 35 25 M 23 31 L 35 31 M 23 37 L 31 37" stroke="#34d399" stroke-width="1.8" stroke-linecap="round" />
+      <rect x="20" y="22" width="18" height="22" rx="2" stroke="#10b981" stroke-width="1.5" fill="none" />
+      <text x="54" y="34" fill="#f1f5f9" class="font-body" font-size="12.5" font-weight="700">Auto Scan</text>
+      <text x="54" y="49" fill="#64748b" class="font-body" font-size="10.5">Crop &amp; Deskew</text>
+    </g>
+
+    <!-- Pill 2: MCP Engine -->
+    <g transform="translate(156, 0)">
+      <rect width="146" height="66" rx="12" fill="url(#featureCardGrad)" stroke="#334155" stroke-width="1" />
+      <rect x="12" y="16" width="34" height="34" rx="8" fill="#06b6d4" fill-opacity="0.12" />
+      <!-- Neural / Hub Nodes Icon -->
+      <circle cx="25" cy="33" r="3" fill="#22d3ee" />
+      <circle cx="37" cy="27" r="2.5" fill="#22d3ee" />
+      <circle cx="37" cy="39" r="2.5" fill="#22d3ee" />
+      <line x1="25" y1="33" x2="37" y2="27" stroke="#22d3ee" stroke-width="1.5" />
+      <line x1="25" y1="33" x2="37" y2="39" stroke="#22d3ee" stroke-width="1.5" />
+      <text x="54" y="34" fill="#f1f5f9" class="font-body" font-size="12.5" font-weight="700">MCP Native</text>
+      <text x="54" y="49" fill="#64748b" class="font-body" font-size="10.5">Claude &amp; Agent</text>
+    </g>
+
+    <!-- Pill 3: Magic Color -->
+    <g transform="translate(312, 0)">
+      <rect width="146" height="66" rx="12" fill="url(#featureCardGrad)" stroke="#334155" stroke-width="1" />
+      <rect x="12" y="16" width="34" height="34" rx="8" fill="#8b5cf6" fill-opacity="0.12" />
+      <!-- Magic Wand / Sparkle -->
+      <path d="M 23 39 L 33 29 M 29 27 L 35 33" stroke="#a78bfa" stroke-width="1.8" stroke-linecap="round" />
+      <path d="M 23 25 L 24 23 L 26 22 L 24 21 L 23 19 L 22 21 L 20 22 L 22 23 Z" fill="#fbbf24" />
+      <circle cx="36" cy="23" r="1.5" fill="#c084fc" />
+      <text x="54" y="34" fill="#f1f5f9" class="font-body" font-size="12.5" font-weight="700">Magic Color</text>
+      <text x="54" y="49" fill="#64748b" class="font-body" font-size="10.5">HD Sharpening</text>
+    </g>
+
+    <!-- Pill 4: Lossless PDF -->
+    <g transform="translate(468, 0)">
+      <rect width="146" height="66" rx="12" fill="url(#featureCardGrad)" stroke="#334155" stroke-width="1" />
+      <rect x="12" y="16" width="34" height="34" rx="8" fill="#3b82f6" fill-opacity="0.12" />
+      <!-- Vector PDF Document -->
+      <path d="M 23 23 H 33 L 37 27 V 41 H 23 Z" stroke="#60a5fa" stroke-width="1.5" fill="none" />
+      <path d="M 33 23 V 27 H 37" fill="none" stroke="#60a5fa" stroke-width="1.5" />
+      <text x="25" y="36" fill="#38bdf8" class="font-mono" font-size="7.5" font-weight="800">PDF</text>
+      <text x="54" y="34" fill="#f1f5f9" class="font-body" font-size="12.5" font-weight="700">Multi-Page</text>
+      <text x="54" y="49" fill="#64748b" class="font-body" font-size="10.5">Zero Watermark</text>
+    </g>
+  </g>
+
+  <!-- Micro metadata text below feature cards -->
+  <g transform="translate(72, 335)">
+    <text class="font-mono" font-size="11" fill="#475569" letter-spacing="0.05em">
+      CAMSCANNER-MCP-HD-SCANNER <tspan fill="#334155">•</tspan> HIGH DYNAMIC RANGE OCR &amp; RESTORATION
+    </text>
+  </g>
+
+
+  <!-- ==================== RIGHT COLUMN: VISUAL SCANNER HERO ==================== -->
+
+  <!-- Isometric / Angled Scanner Artboard Container -->
+  <g transform="translate(730, 42)">
+
+    <!-- Ambient Shadow Underneath Document -->
+    <rect x="75" y="45" width="250" height="300" rx="16" fill="#000000" opacity="0.4" filter="url(#cardShadow)" />
+
+    <!-- Secondary Angled Back Sheet (Multi-page cue) -->
+    <g transform="rotate(5 210 190)">
+      <rect x="70" y="35" width="245" height="295" rx="16" fill="#1e293b" stroke="#334155" stroke-width="1" opacity="0.6" />
+    </g>
+
+    <!-- Main Clean Document Canvas -->
+    <rect x="70" y="35" width="245" height="295" rx="16" fill="url(#docCardGrad)" stroke="#475569" stroke-width="1.5" />
+
+    <!-- Subtle Grid inside document -->
+    <g stroke="#334155" stroke-width="0.75" opacity="0.4" stroke-dasharray="3 3">
+      <line x1="95" y1="70" x2="290" y2="70" />
+      <line x1="95" y1="120" x2="290" y2="120" />
+      <line x1="95" y1="170" x2="290" y2="170" />
+      <line x1="95" y1="220" x2="290" y2="220" />
+      <line x1="95" y1="270" x2="290" y2="270" />
+      <line x1="140" y1="50" x2="140" y2="310" />
+      <line x1="240" y1="50" x2="240" y2="310" />
+    </g>
+
+    <!-- Scanned Mock Document Content (Headers, Columns, Chart) -->
+    <!-- Document Header & Logo Avatar -->
+    <circle cx="106" cy="62" r="11" fill="#06b6d4" fill-opacity="0.25" stroke="#22d3ee" stroke-width="1.2" />
+    <path d="M 102 62 L 105 65 L 110 59" stroke="#38bdf8" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    <rect x="126" y="56" width="85" height="6.5" rx="3.25" fill="#f8fafc" />
+    <rect x="126" y="66" width="55" height="4.5" rx="2.25" fill="#64748b" />
+
+    <!-- Badges on top right of document -->
+    <rect x="238" y="55" width="52" height="18" rx="9" fill="#10b981" fill-opacity="0.15" stroke="#10b981" stroke-width="0.8" />
+    <text x="264" y="67" fill="#34d399" class="font-mono" font-size="8.5" font-weight="700" text-anchor="middle">HD READY</text>
+
+    <!-- Content Paragraph Mock Bars -->
+    <g fill="#475569" opacity="0.85">
+      <rect x="95" y="94" width="195" height="5" rx="2.5" />
+      <rect x="95" y="106" width="170" height="5" rx="2.5" />
+      <rect x="95" y="118" width="185" height="5" rx="2.5" />
+      <rect x="95" y="130" width="140" height="5" rx="2.5" />
+    </g>
+
+    <!-- Technical Chart / Matrix Block inside Document -->
+    <rect x="95" y="152" width="195" height="66" rx="8" fill="#0b0f19" stroke="#334155" stroke-width="0.8" />
+    <!-- Wave / Data curve -->
+    <path d="M 105 195 Q 130 165, 155 185 T 205 175 T 255 162 T 280 180" fill="none" stroke="url(#primaryAccent)" stroke-width="2" />
+    <!-- Chart accent points -->
+    <circle cx="155" cy="185" r="3" fill="#10b981" filter="url(#softGlow)" />
+    <circle cx="205" cy="175" r="3" fill="#06b6d4" filter="url(#softGlow)" />
+    <circle cx="255" cy="162" r="3" fill="#3b82f6" filter="url(#softGlow)" />
+    <!-- Mini barcode/metrics -->
+    <rect x="105" y="160" width="30" height="3" rx="1.5" fill="#64748b" />
+    <rect x="105" y="166" width="45" height="3" rx="1.5" fill="#475569" />
+
+    <!-- Additional document lines -->
+    <g fill="#475569" opacity="0.75">
+      <rect x="95" y="232" width="195" height="4.5" rx="2" />
+      <rect x="95" y="243" width="180" height="4.5" rx="2" />
+      <rect x="95" y="254" width="150" height="4.5" rx="2" />
+    </g>
+
+    <!-- Scan Beam Projection Cone / Trailing Light -->
+    <polygon points="50,172 335,172 315,225 70,225" fill="url(#scanLightArea)" opacity="0.75" />
+
+    <!-- Laser Scanning Beam -->
+    <line x1="45" y1="172" x2="340" y2="172" stroke="url(#scannerBeamGrad)" stroke-width="3.5" filter="url(#intenseGlow)" />
+    <line x1="55" y1="172" x2="330" y2="172" stroke="#ffffff" stroke-width="1.5" />
+
+    <!-- Laser Corner Focus Markers (High-precision scan cues) -->
+    <!-- Top-Left -->
+    <path d="M 60 45 L 50 45 L 50 55" stroke="#10b981" stroke-width="2.5" fill="none" stroke-linecap="round" />
+    <!-- Top-Right -->
+    <path d="M 325 45 L 335 45 L 335 55" stroke="#10b981" stroke-width="2.5" fill="none" stroke-linecap="round" />
+    <!-- Bottom-Left -->
+    <path d="M 50 310 L 50 320 L 60 320" stroke="#3b82f6" stroke-width="2.5" fill="none" stroke-linecap="round" />
+    <!-- Bottom-Right -->
+    <path d="M 335 310 L 335 320 L 325 320" stroke="#3b82f6" stroke-width="2.5" fill="none" stroke-linecap="round" />
+
+    <!-- Floating Badge: AI Enhancement (Top Left of scanner) -->
+    <g transform="translate(15, 80)">
+      <rect width="118" height="38" rx="10" fill="#0f172a" stroke="#10b981" stroke-width="1.2" filter="url(#cardShadow)" />
+      <circle cx="20" cy="19" r="8" fill="#10b981" fill-opacity="0.2" />
+      <!-- Sparkle -->
+      <path d="M 20 13 L 21.5 17.5 L 26 19 L 21.5 20.5 L 20 25 L 18.5 20.5 L 14 19 L 18.5 17.5 Z" fill="url(#sparkleGrad)" />
+      <text x="36" y="18" fill="#f8fafc" class="font-body" font-size="10" font-weight="700">Magic Color</text>
+      <text x="36" y="29" fill="#10b981" class="font-mono" font-size="8.5" font-weight="600">Auto-Enhance</text>
+    </g>
+
+    <!-- Floating Badge: Lossless Multi-page PDF (Bottom Right of scanner) -->
+    <g transform="translate(255, 230)">
+      <rect width="128" height="42" rx="10" fill="#0f172a" stroke="#38bdf8" stroke-width="1.2" filter="url(#cardShadow)" />
+      <circle cx="22" cy="21" r="10" fill="#0284c7" fill-opacity="0.25" />
+      <path d="M 17 14 H 25 L 28 17 V 28 H 17 Z" stroke="#38bdf8" stroke-width="1.4" fill="none" />
+      <text x="38" y="19" fill="#f8fafc" class="font-body" font-size="10" font-weight="700">Lossless PDF</text>
+      <text x="38" y="32" fill="#38bdf8" class="font-mono" font-size="8.5" font-weight="600">300+ DPI Clean</text>
+    </g>
+
+    <!-- Floating Circular Node: MCP Server Live Connection -->
+    <g transform="translate(305, 105)">
+      <circle cx="22" cy="22" r="22" fill="#0f172a" stroke="#06b6d4" stroke-width="1.5" filter="url(#intenseGlow)" />
+      <!-- MCP Fork / Connector Symbol -->
+      <path d="M 16 16 L 22 22 M 28 16 L 22 22 M 22 22 L 22 29" stroke="#22d3ee" stroke-width="2.2" stroke-linecap="round" />
+      <circle cx="16" cy="16" r="2" fill="#38bdf8" />
+      <circle cx="28" cy="16" r="2" fill="#38bdf8" />
+      <circle cx="22" cy="29" r="2" fill="#10b981" />
+    </g>
+  </g>
+
+  <!-- Outer Glass Framing & Subtle Bevel -->
+  <rect x="0.5" y="0.5" width="1199" height="399" fill="none" stroke="#334155" stroke-width="1" stroke-opacity="0.6" />
+</svg>

@@ -1,0 +1,297 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 550" width="900" height="550">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080C16" />
+      <stop offset="50%" stop-color="#0D1322" />
+      <stop offset="100%" stop-color="#070A12" />
+    </linearGradient>
+
+    <!-- Radial Glows -->
+    <radialGradient id="glow-teal" cx="80%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#06B6D4" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#06B6D4" stop-opacity="0.0" />
+    </radialGradient>
+    <radialGradient id="glow-red" cx="40%" cy="40%" r="40%">
+      <stop offset="0%" stop-color="#EF4444" stop-opacity="0.06" />
+      <stop offset="100%" stop-color="#EF4444" stop-opacity="0.0" />
+    </radialGradient>
+
+    <!-- Column & Cell Gradients -->
+    <linearGradient id="winner-header-bg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#065F46" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#0284C7" stop-opacity="0.45" />
+    </linearGradient>
+    <linearGradient id="winner-cell-bg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#064E3B" stop-opacity="0.32" />
+      <stop offset="100%" stop-color="#0E3846" stop-opacity="0.18" />
+    </linearGradient>
+    <linearGradient id="winner-badge-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#0284C7" />
+    </linearGradient>
+    <linearGradient id="title-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#34D399" />
+    </linearGradient>
+
+    <!-- Background Subtle Dot Pattern -->
+    <pattern id="dot-pattern" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="12" cy="12" r="0.75" fill="#334155" fill-opacity="0.22" />
+    </pattern>
+
+    <style>
+      .font-main { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+    </style>
+  </defs>
+
+  <!-- Base Canvas Background -->
+  <rect width="900" height="550" fill="url(#bg-grad)" />
+  <rect width="900" height="550" fill="url(#dot-pattern)" />
+  <rect width="900" height="550" fill="url(#glow-teal)" />
+  <rect width="900" height="550" fill="url(#glow-red)" />
+
+  <!-- Outer Border Frame -->
+  <rect x="1" y="1" width="898" height="548" rx="16" fill="none" stroke="#1E293B" stroke-width="1.5" stroke-opacity="0.6" />
+
+  <!-- ==================== HEADER AREA ==================== -->
+  <!-- Top Category Pill Tag -->
+  <g transform="translate(35, 18)" class="font-main">
+    <rect width="186" height="22" rx="11" fill="#10B981" fill-opacity="0.12" stroke="#10B981" stroke-width="1" stroke-opacity="0.4" />
+    <circle cx="12" cy="11" r="3.5" fill="#10B981" />
+    <text x="22" y="14.5" font-size="9.5" font-weight="700" fill="#34D399" letter-spacing="0.8">FEATURE COMPARISON</text>
+  </g>
+
+  <!-- Architecture Stat Badge (Header Right) -->
+  <g transform="translate(675, 18)" class="font-main">
+    <rect width="190" height="34" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1" stroke-opacity="0.35" />
+    <text x="14" y="15" font-size="8.5" fill="#64748B" font-weight="700" letter-spacing="0.5">CORE ARCHITECTURE</text>
+    <text x="14" y="27" font-size="11" fill="#34D399" font-weight="700">100% Offline • Open Source</text>
+  </g>
+
+  <!-- Main Headline Title -->
+  <text x="35" y="62" class="font-main" font-size="21" font-weight="800" letter-spacing="-0.3">
+    <tspan fill="#F87171">CamScanner Free App</tspan>
+    <tspan fill="#64748B" font-weight="400"> vs. </tspan>
+    <tspan fill="url(#title-grad)">Local HD Scanner + MCP</tspan>
+  </text>
+
+  <!-- Subtitle Description -->
+  <text x="35" y="81" class="font-main" font-size="11.5" font-weight="400">
+    <tspan fill="#64748B">Direct technical breakdown: </tspan>
+    <tspan fill="#94A3B8">Watermark, resolution fidelity, page caps, data privacy, and agent automation</tspan>
+  </text>
+
+  <!-- ==================== TABLE COLUMN HEADERS ==================== -->
+  <!-- Col 1 Header: Specification -->
+  <g transform="translate(35, 96)" class="font-main">
+    <rect width="200" height="38" rx="8" fill="#0D1322" stroke="#1E293B" stroke-width="1" />
+    <text x="16" y="23" font-size="11" font-weight="700" fill="#64748B" letter-spacing="1">CRITERIA / FEATURE</text>
+  </g>
+
+  <!-- Col 2 Header: CamScanner Free -->
+  <g transform="translate(247, 96)" class="font-main">
+    <rect width="295" height="38" rx="8" fill="#131826" stroke="#28324A" stroke-width="1" />
+    <text x="18" y="23.5" font-size="13" font-weight="700" fill="#F87171">CamScanner Free App</text>
+    <rect x="195" y="9" width="88" height="20" rx="10" fill="#24141E" stroke="#EF4444" stroke-width="0.8" stroke-opacity="0.4" />
+    <text x="239" y="22.5" font-size="9" font-weight="600" fill="#FCA5A5" text-anchor="middle">Freemium App</text>
+  </g>
+
+  <!-- Col 3 Header: Local HD Scanner + MCP (Winner) -->
+  <g transform="translate(554, 96)" class="font-main">
+    <rect width="311" height="38" rx="8" fill="url(#winner-header-bg)" stroke="#10B981" stroke-width="1.2" stroke-opacity="0.6" />
+    <text x="18" y="23.5" font-size="13" font-weight="800" fill="#38BDF8">Local HD Scanner + MCP</text>
+    <rect x="206" y="8" width="94" height="22" rx="11" fill="url(#winner-badge-grad)" />
+    <text x="253" y="22" font-size="9" font-weight="800" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.5">★ WINNER</text>
+  </g>
+
+  <!-- ==================== ROW 1: WATERMARK ==================== -->
+  <g transform="translate(0, 140)" class="font-main">
+    <!-- Col 1 -->
+    <rect x="35" y="0" width="200" height="52" rx="8" fill="#0D1322" stroke="#1E293B" stroke-width="1" />
+    <!-- Icon 1: Watermark/Stamp -->
+    <rect x="47" y="11" width="30" height="30" rx="6" fill="#1E293B" fill-opacity="0.6" />
+    <rect x="54" y="17" width="16" height="18" rx="2" fill="none" stroke="#60A5FA" stroke-width="1.4" />
+    <line x1="58" y1="22" x2="66" y2="22" stroke="#60A5FA" stroke-width="1.2" stroke-linecap="round" />
+    <line x1="58" y1="26" x2="63" y2="26" stroke="#60A5FA" stroke-width="1.2" stroke-linecap="round" />
+    <circle cx="64" cy="28" r="1.8" fill="#F87171" />
+    <text x="86" y="24" font-size="12" font-weight="700" fill="#E2E8F0">Watermark</text>
+    <text x="86" y="38" font-size="10" font-weight="500" fill="#64748B">Output Branding</text>
+
+    <!-- Col 2: CamScanner -->
+    <rect x="247" y="0" width="295" height="52" rx="8" fill="#141824" stroke="#251F2A" stroke-width="1" />
+    <!-- Red Cross -->
+    <circle cx="268" cy="26" r="11" fill="#EF4444" fill-opacity="0.15" stroke="#EF4444" stroke-width="1.2" />
+    <path d="M264 22 L272 30 M272 22 L264 30" stroke="#EF4444" stroke-width="2" stroke-linecap="round" />
+    <text x="290" y="23" font-size="12" font-weight="600" fill="#F87171">Forced Watermark</text>
+    <text x="290" y="38" font-size="10.5" font-weight="400" fill="#94A3B8">'Scanned with CamScanner' stamp</text>
+
+    <!-- Col 3: Local HD Scanner -->
+    <rect x="554" y="0" width="311" height="52" rx="8" fill="url(#winner-cell-bg)" stroke="#10B981" stroke-width="1.2" stroke-opacity="0.4" />
+    <!-- Green Check -->
+    <circle cx="22" cy="26" r="11" fill="#10B981" fill-opacity="0.2" stroke="#10B981" stroke-width="1.2" transform="translate(554, 0)" />
+    <path d="M571 26 L574.5 29.5 L581 22" fill="none" stroke="#34D399" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="596" y="23" font-size="12.5" font-weight="700" fill="#34D399">Zero Watermark, Clean</text>
+    <text x="596" y="38" font-size="10.5" font-weight="500" fill="#CBD5E1">100% white-label pristine document export</text>
+  </g>
+
+  <!-- ==================== ROW 2: RESOLUTION / QUALITY ==================== -->
+  <g transform="translate(0, 198)" class="font-main">
+    <!-- Col 1 -->
+    <rect x="35" y="0" width="200" height="52" rx="8" fill="#0D1322" stroke="#1E293B" stroke-width="1" />
+    <!-- Icon 2: HD / Clarity -->
+    <rect x="47" y="11" width="30" height="30" rx="6" fill="#1E293B" fill-opacity="0.6" />
+    <rect x="53" y="18" width="18" height="16" rx="3" fill="none" stroke="#A78BFA" stroke-width="1.4" />
+    <text x="62" y="29.5" font-size="7.5" font-weight="800" fill="#A78BFA" text-anchor="middle">HD</text>
+    <text x="86" y="24" font-size="12" font-weight="700" fill="#E2E8F0">Resolution / Quality</text>
+    <text x="86" y="38" font-size="10" font-weight="500" fill="#64748B">Image Fidelity &amp; DPI</text>
+
+    <!-- Col 2: CamScanner -->
+    <rect x="247" y="0" width="295" height="52" rx="8" fill="#141824" stroke="#251F2A" stroke-width="1" />
+    <!-- Red Cross -->
+    <circle cx="268" cy="26" r="11" fill="#EF4444" fill-opacity="0.15" stroke="#EF4444" stroke-width="1.2" />
+    <path d="M264 22 L272 30 M272 22 L264 30" stroke="#EF4444" stroke-width="2" stroke-linecap="round" />
+    <text x="290" y="23" font-size="12" font-weight="600" fill="#F87171">Compressed / Downscaled</text>
+    <text x="290" y="38" font-size="10.5" font-weight="400" fill="#94A3B8">Lossy compression, degraded sharpness</text>
+
+    <!-- Col 3: Local HD Scanner -->
+    <rect x="554" y="0" width="311" height="52" rx="8" fill="url(#winner-cell-bg)" stroke="#10B981" stroke-width="1.2" stroke-opacity="0.4" />
+    <!-- Green Check -->
+    <circle cx="22" cy="26" r="11" fill="#10B981" fill-opacity="0.2" stroke="#10B981" stroke-width="1.2" transform="translate(554, 0)" />
+    <path d="M571 26 L574.5 29.5 L581 22" fill="none" stroke="#34D399" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="596" y="23" font-size="12.5" font-weight="700" fill="#34D399">Full Lossless 300 DPI HD</text>
+    <text x="596" y="38" font-size="10.5" font-weight="500" fill="#CBD5E1">True archival clarity &amp; adaptive binarization</text>
+  </g>
+
+  <!-- ==================== ROW 3: PAGE LIMITS ==================== -->
+  <g transform="translate(0, 256)" class="font-main">
+    <!-- Col 1 -->
+    <rect x="35" y="0" width="200" height="52" rx="8" fill="#0D1322" stroke="#1E293B" stroke-width="1" />
+    <!-- Icon 3: Page Stack -->
+    <rect x="47" y="11" width="30" height="30" rx="6" fill="#1E293B" fill-opacity="0.6" />
+    <rect x="56" y="16" width="13" height="15" rx="2" fill="none" stroke="#FBBF24" stroke-width="1.3" />
+    <rect x="52" y="20" width="13" height="15" rx="2" fill="#1E293B" stroke="#FBBF24" stroke-width="1.3" />
+    <text x="86" y="24" font-size="12" font-weight="700" fill="#E2E8F0">Page Limits</text>
+    <text x="86" y="38" font-size="10" font-weight="500" fill="#64748B">Batch Capacity</text>
+
+    <!-- Col 2: CamScanner -->
+    <rect x="247" y="0" width="295" height="52" rx="8" fill="#141824" stroke="#251F2A" stroke-width="1" />
+    <!-- Red Cross -->
+    <circle cx="268" cy="26" r="11" fill="#EF4444" fill-opacity="0.15" stroke="#EF4444" stroke-width="1.2" />
+    <path d="M264 22 L272 30 M272 22 L264 30" stroke="#EF4444" stroke-width="2" stroke-linecap="round" />
+    <text x="290" y="23" font-size="12" font-weight="600" fill="#F87171">Capped &amp; Paywalled</text>
+    <text x="290" y="38" font-size="10.5" font-weight="400" fill="#94A3B8">Page quotas, upgrade prompts &amp; nag popups</text>
+
+    <!-- Col 3: Local HD Scanner -->
+    <rect x="554" y="0" width="311" height="52" rx="8" fill="url(#winner-cell-bg)" stroke="#10B981" stroke-width="1.2" stroke-opacity="0.4" />
+    <!-- Green Check -->
+    <circle cx="22" cy="26" r="11" fill="#10B981" fill-opacity="0.2" stroke="#10B981" stroke-width="1.2" transform="translate(554, 0)" />
+    <path d="M571 26 L574.5 29.5 L581 22" fill="none" stroke="#34D399" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="596" y="23" font-size="12.5" font-weight="700" fill="#34D399">Unlimited Pages</text>
+    <text x="596" y="38" font-size="10.5" font-weight="500" fill="#CBD5E1">Infinite document batches with zero caps</text>
+  </g>
+
+  <!-- ==================== ROW 4: PRIVACY & OFFLINE ==================== -->
+  <g transform="translate(0, 314)" class="font-main">
+    <!-- Col 1 -->
+    <rect x="35" y="0" width="200" height="52" rx="8" fill="#0D1322" stroke="#1E293B" stroke-width="1" />
+    <!-- Icon 4: Shield/Lock -->
+    <rect x="47" y="11" width="30" height="30" rx="6" fill="#1E293B" fill-opacity="0.6" />
+    <path d="M62 16 L69 19.5 V25.5 C69 30 62 33 62 33 C62 33 55 30 55 25.5 V19.5 Z" fill="none" stroke="#34D399" stroke-width="1.4" stroke-linejoin="round" />
+    <path d="M59.5 24.5 L61 26 L65 22" fill="none" stroke="#34D399" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="86" y="24" font-size="12" font-weight="700" fill="#E2E8F0">Privacy &amp; Offline</text>
+    <text x="86" y="38" font-size="10" font-weight="500" fill="#64748B">Data Custody &amp; Network</text>
+
+    <!-- Col 2: CamScanner -->
+    <rect x="247" y="0" width="295" height="52" rx="8" fill="#141824" stroke="#251F2A" stroke-width="1" />
+    <!-- Red Cross -->
+    <circle cx="268" cy="26" r="11" fill="#EF4444" fill-opacity="0.15" stroke="#EF4444" stroke-width="1.2" />
+    <path d="M264 22 L272 30 M272 22 L264 30" stroke="#EF4444" stroke-width="2" stroke-linecap="round" />
+    <text x="290" y="23" font-size="12" font-weight="600" fill="#F87171">Cloud Upload Required</text>
+    <text x="290" y="38" font-size="10.5" font-weight="400" fill="#94A3B8">Third-party servers, tracker SDKs &amp; telemetry</text>
+
+    <!-- Col 3: Local HD Scanner -->
+    <rect x="554" y="0" width="311" height="52" rx="8" fill="url(#winner-cell-bg)" stroke="#10B981" stroke-width="1.2" stroke-opacity="0.4" />
+    <!-- Green Check -->
+    <circle cx="22" cy="26" r="11" fill="#10B981" fill-opacity="0.2" stroke="#10B981" stroke-width="1.2" transform="translate(554, 0)" />
+    <path d="M571 26 L574.5 29.5 L581 22" fill="none" stroke="#34D399" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="596" y="23" font-size="12.5" font-weight="700" fill="#34D399">100% Local / Zero Data Leaks</text>
+    <text x="596" y="38" font-size="10.5" font-weight="500" fill="#CBD5E1">Air-gapped on-device compute, zero telemetry</text>
+  </g>
+
+  <!-- ==================== ROW 5: AUTOMATION ==================== -->
+  <g transform="translate(0, 372)" class="font-main">
+    <!-- Col 1 -->
+    <rect x="35" y="0" width="200" height="52" rx="8" fill="#0D1322" stroke="#1E293B" stroke-width="1" />
+    <!-- Icon 5: Terminal / MCP -->
+    <rect x="47" y="11" width="30" height="30" rx="6" fill="#1E293B" fill-opacity="0.6" />
+    <rect x="53" y="18" width="18" height="16" rx="3" fill="none" stroke="#38BDF8" stroke-width="1.4" />
+    <path d="M57 23 L60 26 L57 29" fill="none" stroke="#38BDF8" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+    <line x1="62" y1="29" x2="67" y2="29" stroke="#38BDF8" stroke-width="1.3" stroke-linecap="round" />
+    <text x="86" y="24" font-size="12" font-weight="700" fill="#E2E8F0">Automation</text>
+    <text x="86" y="38" font-size="10" font-weight="500" fill="#64748B">Agent &amp; Tool Support</text>
+
+    <!-- Col 2: CamScanner -->
+    <rect x="247" y="0" width="295" height="52" rx="8" fill="#141824" stroke="#251F2A" stroke-width="1" />
+    <!-- Red Cross -->
+    <circle cx="268" cy="26" r="11" fill="#EF4444" fill-opacity="0.15" stroke="#EF4444" stroke-width="1.2" />
+    <path d="M264 22 L272 30 M272 22 L264 30" stroke="#EF4444" stroke-width="2" stroke-linecap="round" />
+    <text x="290" y="23" font-size="12" font-weight="600" fill="#F87171">Manual Mobile App Taps</text>
+    <text x="290" y="38" font-size="10.5" font-weight="400" fill="#94A3B8">No CLI, no API, manual GUI interaction only</text>
+
+    <!-- Col 3: Local HD Scanner -->
+    <rect x="554" y="0" width="311" height="52" rx="8" fill="url(#winner-cell-bg)" stroke="#10B981" stroke-width="1.2" stroke-opacity="0.4" />
+    <!-- Green Check -->
+    <circle cx="22" cy="26" r="11" fill="#10B981" fill-opacity="0.2" stroke="#10B981" stroke-width="1.2" transform="translate(554, 0)" />
+    <path d="M571 26 L574.5 29.5 L581 22" fill="none" stroke="#34D399" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="596" y="23" font-size="12.5" font-weight="700" fill="#34D399">Full MCP / CLI Automation</text>
+    <text x="596" y="38" font-size="10.5" font-weight="500" fill="#CBD5E1">Autonomous Claude/AI Agents, pipelines &amp; CLI</text>
+  </g>
+
+  <!-- ==================== ROW 6: COST ==================== -->
+  <g transform="translate(0, 430)" class="font-main">
+    <!-- Col 1 -->
+    <rect x="35" y="0" width="200" height="52" rx="8" fill="#0D1322" stroke="#1E293B" stroke-width="1" />
+    <!-- Icon 6: Pricing / Tag -->
+    <rect x="47" y="11" width="30" height="30" rx="6" fill="#1E293B" fill-opacity="0.6" />
+    <path d="M55 17 H61 L69 25 L64 30 L55 21 Z" fill="none" stroke="#F472B6" stroke-width="1.4" stroke-linejoin="round" />
+    <circle cx="58.5" cy="20.5" r="1.4" fill="#F472B6" />
+    <text x="86" y="24" font-size="12" font-weight="700" fill="#E2E8F0">Cost</text>
+    <text x="86" y="38" font-size="10" font-weight="500" fill="#64748B">Pricing &amp; Licensing</text>
+
+    <!-- Col 2: CamScanner -->
+    <rect x="247" y="0" width="295" height="52" rx="8" fill="#141824" stroke="#251F2A" stroke-width="1" />
+    <!-- Red Cross -->
+    <circle cx="268" cy="26" r="11" fill="#EF4444" fill-opacity="0.15" stroke="#EF4444" stroke-width="1.2" />
+    <path d="M264 22 L272 30 M272 22 L264 30" stroke="#EF4444" stroke-width="2" stroke-linecap="round" />
+    <text x="290" y="23" font-size="12" font-weight="600" fill="#F87171">$49.99 / yr for Pro</text>
+    <text x="290" y="38" font-size="10.5" font-weight="400" fill="#94A3B8">Recurring annual subscription toll</text>
+
+    <!-- Col 3: Local HD Scanner -->
+    <rect x="554" y="0" width="311" height="52" rx="8" fill="url(#winner-cell-bg)" stroke="#10B981" stroke-width="1.2" stroke-opacity="0.4" />
+    <!-- Green Check -->
+    <circle cx="22" cy="26" r="11" fill="#10B981" fill-opacity="0.2" stroke="#10B981" stroke-width="1.2" transform="translate(554, 0)" />
+    <path d="M571 26 L574.5 29.5 L581 22" fill="none" stroke="#34D399" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="596" y="23" font-size="12.5" font-weight="700" fill="#34D399">100% Free &amp; Open Source</text>
+    <text x="596" y="38" font-size="10.5" font-weight="500" fill="#CBD5E1">Forever free, zero paywalls, MIT License</text>
+  </g>
+
+  <!-- ==================== BOTTOM SUMMARY FOOTER ==================== -->
+  <g transform="translate(35, 492)" class="font-main">
+    <rect width="830" height="44" rx="10" fill="#0C1425" stroke="#1E293B" stroke-width="1.2" />
+    <!-- Status Indicator -->
+    <circle cx="24" cy="22" r="8" fill="#10B981" fill-opacity="0.2" />
+    <circle cx="24" cy="22" r="4" fill="#34D399" />
+    <!-- Summary Headline -->
+    <text x="44" y="19" font-size="11.5" font-weight="700" fill="#F8FAFC">
+      VERDICT: <tspan font-weight="400" fill="#CBD5E1">Local HD Scanner + MCP delivers superior 300 DPI output with zero cost, total privacy, and AI automation.</tspan>
+    </text>
+    <!-- Sub-summary -->
+    <text x="44" y="32" font-size="10" font-weight="500" fill="#64748B">
+      Zero cloud roundtrips • Lossless image pipeline • Native Model Context Protocol (MCP) server integration
+    </text>
+    <!-- Badge Right -->
+    <rect x="715" y="11" width="103" height="22" rx="11" fill="#1E293B" stroke="#334155" stroke-width="1" />
+    <text x="766" y="25" font-size="9" font-weight="700" fill="#38BDF8" text-anchor="middle">MIT LICENSED</text>
+  </g>
+</svg>
