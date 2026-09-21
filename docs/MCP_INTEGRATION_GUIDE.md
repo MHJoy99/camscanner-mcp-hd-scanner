@@ -275,15 +275,15 @@ Extract text, structural formatting, and data tables from images or PDFs via Cam
 ```bash
 # Perform multilingual OCR on a single image and print markdown
 camscanner-cli image ocr \
-  --input "D:\Camscanner PDF\PDF 1\IMG20260921162034.jpg" \
+  --input "./samples/raw_photo_01.jpg" \
   --lang auto \
   --format markdown \
   --include-tables
 
 # Extract text from an entire multi-page PDF document into a text file
 camscanner-cli image ocr \
-  --input "D:\Camscanner PDF\output\Physics_Ch1_Scanned_HD.pdf" \
-  --output "D:\Camscanner PDF\output\Physics_Ch1_Transcript.md" \
+  --input "./output/Sample_Document.pdf" \
+  --output "./output/Sample_Document_Transcript.md" \
   --detect-orientation \
   --preserve-layout
 ```
@@ -368,8 +368,8 @@ For large datasets, use the local engine for initial edge detection, shadow whit
 
 ```powershell
 # Step 1: Process local camera captures using Python
-python "D:\Camscanner PDF\scripts\batch_scanner.py" "D:\Camscanner PDF\PDF 1" "D:\Camscanner PDF\output\Physics_Ch1_Scanned_HD.pdf"
+python scripts/batch_scanner.py "path/to/raw_photos" "output/Scanned_Document_HD.pdf"
 
 # Step 2: Use CamScanner remote OCR via CLI or Agent
-camscanner-cli image ocr --input "D:\Camscanner PDF\output\Physics_Ch1_Scanned_HD.pdf" --format markdown --output "D:\Camscanner PDF\output\Physics_Ch1.md"
+camscanner-cli image ocr --input "output/Scanned_Document_HD.pdf" --format markdown --output "output/Document_Transcript.md"
 ```
