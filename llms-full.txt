@@ -1,0 +1,96 @@
+CamScanner MCP & HD Auto-Scanner: complete description
+=====================================================
+Website: https://mhjoy99.github.io/camscanner-mcp-hd-scanner/
+Repository: https://github.com/MHJoy99/camscanner-mcp-hd-scanner
+Author: MHJoy99 (https://github.com/MHJoy99)
+Licence: MIT. Not affiliated with CamScanner / INTSIG.
+
+WHAT IT IS
+An open-source Python project with two engines. (1) A local OpenCV pipeline that converts phone photos of paper into clean, multi-page, 300 DPI PDFs with no watermark added. (2) Documentation and configuration for connecting AI agents to the CamScanner MCP, a remote Model Context Protocol endpoint at https://ai-tools.camscanner.com/mcp that the README describes as official and that uses Streamable HTTP.
+
+LOCAL ENGINE: THE FIVE STAGES (scripts/batch_scanner.py)
+1. Detect and rectify: the photo is shrunk so its longest side is 1000 px, blurred (7x7 Gaussian), run through Canny edge detection (thresholds 30 and 120) and a 9x9 morphological close. The largest outline covering over 40% of the frame is simplified with approxPolyDP (2% of its perimeter); if it has four corners the page is warped flat with a perspective transform. Fallbacks: a bounding box for other outlines, a 2.5% border trim if nothing is found.
+2. Estimate the lighting: a grayscale copy is dilated with an 11x11 window (erasing ink strokes) and median-filtered at 31x31, leaving an estimate of the illumination on blank paper.
+3. Divide out shadows: every colour channel is multiplied by 255 divided by that background estimate, cancelling shadows and gradients while keeping ink hue.
+4. Magic Color tone curve (256-entry lookup table): values of 215 and above become 255 (pure white); values below 40 are multiplied by 0.75; values from 40 to 215 are stretched linearly onto 30 to 255.
+5. Sharpen and export: a 3x3 kernel [0, -0.3, 0; -0.3, 2.2, -0.3; 0, -0.3, 0] (weights sum to 1.0) is applied, and Pillow saves all pages as one PDF with quality 95 and 300 DPI metadata.
+
+USAGE
+git clone https://github.com/MHJoy99/camscanner-mcp-hd-scanner.git
+cd camscanner-mcp-hd-scanner
+pip install opencv-python pillow numpy pypdf
+python scripts/batch_scanner.py "path/to/raw_photos" "output/Scanned_Document_HD.pdf"
+
+Images (.jpg, .jpeg, .png, .bmp, .webp) in the folder are processed in filename order into one PDF. A lighter script, scan_to_pdf.py, processes images next to the script and writes Scanned_HD_Output.pdf (argument bw selects a black-and-white filter; default magic_color).
+
+MCP SETUP (from the README)
+Endpoint: https://ai-tools.camscanner.com/mcp
+Kilo CLI (kilo.json or kilo.jsonc):
+{
+  "mcp": {
+    "camscanner-mcp": {
+      "type": "remote",
+      "url": "https://ai-tools.camscanner.com/mcp",
+      "headers": {
+        "X-IS-AGENT": "general"
+      },
+      "enabled": true
+    }
+  }
+}
+
+Claude Desktop (claude_desktop_config.json):
+{
+  "mcpServers": {
+    "camscanner": {
+      "url": "https://ai-tools.camscanner.com/mcp",
+      "headers": {
+        "X-IS-AGENT": "general"
+      }
+    }
+  }
+}
+
+The README says the remote endpoint lets AI agents trigger OCR, PDF merging, document translation and format conversion through tool calls. The repo's MCP Integration Guide (https://github.com/MHJoy99/camscanner-mcp-hd-scanner/blob/main/docs/MCP_INTEGRATION_GUIDE.md) also covers Cursor and VS Code, the OAuth 2.0 sign-in with PKCE, and the camscanner-cli command line. The remote service is CamScanner's own; it requires internet access and a sign-in, and documents sent to it travel to the cloud.
+
+LOCAL VS REMOTE
+Local Python engine: runs on your CPU, no network needed, free (MIT), no OCR. Remote CamScanner MCP: hosted by CamScanner, needs internet and sign-in, offers OCR, merging, translation, conversion (README) and table extraction and search (guide); the guide notes a Pro plan or API quota may apply. The guide suggests scanning locally first and then sending the PDF to remote OCR.
+
+REPORTED PERFORMANCE (author's own figures, not independently verified)
+The README reports about 3.2 seconds for 20 high-resolution pages. The Algorithm Deep Dive reports about 153 ms for one 12-megapixel page on its test machine.
+
+LIMITATIONS
+White paper on a white surface is hard for edge detection. A plain perspective warp assumes a flat sheet, so curved book pages are not flattened, and glossy reflections are not corrected by the shipped scripts.
+
+FAQ
+Q: What is CamScanner MCP & HD Auto-Scanner?
+A: It is an open-source (MIT) Python project with two engines. A local OpenCV pipeline turns phone photos of paper into clean multi-page PDFs: it finds the page, flattens the perspective, estimates and removes shadows, whitens the paper and sharpens the ink. The repo also documents how to connect AI agents such as Claude Desktop, Kilo CLI and Cursor to the CamScanner MCP endpoint. It is an independent project and is not affiliated with CamScanner or INTSIG.
+
+Q: How do I scan phone photos to a PDF without a watermark?
+A: Put your photos in a folder (JPG, PNG or WebP; the script also reads JPEG and BMP) and run python scripts/batch_scanner.py "path/to/raw_photos" "output/Scanned_Document_HD.pdf". The script processes the images in filename order, applies the Magic Color pipeline to each one and writes a single multi-page PDF. The local engine adds no stamp or watermark to the PDF it writes.
+
+Q: Does it work offline? Are my documents uploaded?
+A: The local engine runs entirely on your machine with OpenCV, NumPy and Pillow, and its code makes no network calls, so your photos are not uploaded. The remote CamScanner MCP endpoint is different: the integration guide notes that it needs internet access and a sign-in, and that documents sent to it travel to CamScanner's cloud.
+
+Q: How does the shadow removal and paper whitening work?
+A: It estimates the lighting first: a grayscale copy is dilated with an 11x11 kernel, which erases thin ink strokes, then smoothed with a 31x31 median filter. Each colour channel is then multiplied by 255 divided by that background estimate, which cancels uneven light and cast shadows. A tone curve maps values of 215 and above to pure white and deepens dark ink, and a 3x3 sharpening kernel finishes the page.
+
+Q: How do I connect it to Claude Desktop, Cursor or Kilo CLI?
+A: Add the CamScanner MCP endpoint, https://ai-tools.camscanner.com/mcp, to your client's MCP configuration. The README shows a Kilo CLI snippet (type remote, with an X-IS-AGENT: general header) and a Claude Desktop snippet. The MCP Integration Guide in the repo also covers Cursor and VS Code, the OAuth 2.0 sign-in and the camscanner-cli commands.
+
+Q: What can the CamScanner MCP endpoint do?
+A: According to the README it is a remote Model Context Protocol endpoint using Streamable HTTP that lets AI agents trigger OCR, PDF merging, document translation and format conversion through tool calls. The integration guide also lists table extraction and document search. These tools run on CamScanner's servers, not in this repo's Python engine.
+
+Q: Is there a page or resolution limit?
+A: The README states there is no page cap and that the PDF is written at 300 DPI. In the code, every image found in the folder is processed and held in memory, then saved as one PDF with JPEG quality 95 and 300 DPI metadata, so very large batches are bounded by your available memory rather than by a built-in limit.
+
+Q: How fast is it?
+A: The README reports about 3.2 seconds for 20 high-resolution pages on a CPU, and the Algorithm Deep Dive reports about 153 ms for one 12-megapixel page on its test machine. These are the author's own figures and will vary with your hardware.
+
+Q: Which situations does it handle poorly?
+A: Page detection looks for a four-corner outline covering at least 40% of the frame. If it finds a different outline it falls back to a bounding box, and if it finds none it trims a 2.5% border. White paper on a white desk is hard for edge detection, and the scripts do not flatten curved book pages or correct glossy reflections, because a plain perspective warp assumes a flat sheet.
+
+Q: Is it affiliated with CamScanner? What licence is it under?
+A: No. This is an independent project by MHJoy99 and is not affiliated with CamScanner or INTSIG. The README calls its filter "CamScanner Magic Color"; the repo reproduces a similar look with OpenCV, and CamScanner remains a trademark of its owner. The code is MIT licensed, free for personal, educational and commercial use.
+
+Responsible use: the remote CamScanner service has its own terms; follow them. This site is not affiliated with CamScanner / INTSIG.

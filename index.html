@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CamScanner MCP &amp; HD Auto-Scanner: Free PDF Scanner</title>
+<meta name="description" content="Free, open-source Python scanner: straightens phone photos, removes shadows, whitens paper, exports 300 DPI PDFs. CamScanner MCP setup for AI agents.">
+<link rel="canonical" href="https://mhjoy99.github.io/camscanner-mcp-hd-scanner/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="author" content="MHJoy99">
+<meta name="theme-color" content="#f4f8f3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#07110e" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="https://mhjoy99.github.io/camscanner-mcp-hd-scanner/favicon.svg">
+<script>document.documentElement.className+=' js'</script>
+<link rel="stylesheet" href="site.css">
+<meta name="keywords" content="CamScanner MCP, CamScanner alternative, scan photos to PDF, document scanner Python OpenCV, shadow removal, perspective correction, 300 DPI PDF, Model Context Protocol, Claude Desktop MCP">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CamScanner MCP & HD Auto-Scanner">
+<meta property="og:title" content="CamScanner MCP &amp; HD Auto-Scanner: Free PDF Scanner">
+<meta property="og:description" content="Free, open-source Python scanner: straightens phone photos, removes shadows, whitens paper, exports 300 DPI PDFs. CamScanner MCP setup for AI agents.">
+<meta property="og:url" content="https://mhjoy99.github.io/camscanner-mcp-hd-scanner/">
+<meta property="og:image" content="https://mhjoy99.github.io/camscanner-mcp-hd-scanner/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A skewed, shadowy phone photo of a page becomes a crisp white PDF page: CamScanner MCP and HD Auto-Scanner">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CamScanner MCP &amp; HD Auto-Scanner: Free PDF Scanner">
+<meta name="twitter:description" content="Free, open-source Python scanner: straightens phone photos, removes shadows, whitens paper, exports 300 DPI PDFs. CamScanner MCP setup for AI agents.">
+<meta name="twitter:image" content="https://mhjoy99.github.io/camscanner-mcp-hd-scanner/og-image.png">
+<meta name="twitter:image:alt" content="A skewed, shadowy phone photo of a page becomes a crisp white PDF page">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "@id": "https://mhjoy99.github.io/camscanner-mcp-hd-scanner/#app",
+  "name": "CamScanner MCP & HD Auto-Scanner",
+  "url": "https://mhjoy99.github.io/camscanner-mcp-hd-scanner/",
+  "description": "Free, open-source Python scanner: straightens phone photos, removes shadows, whitens paper, exports 300 DPI PDFs. CamScanner MCP setup for AI agents.",
+  "applicationCategory": "UtilitiesApplication",
+  "applicationSubCategory": "Document scanner, MCP integration",
+  "operatingSystem": "Any OS with Python 3.9+",
+  "softwareRequirements": "Python 3.9+, opencv-python, pillow, numpy, pypdf",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "license": "https://opensource.org/licenses/MIT",
+  "isAccessibleForFree": true,
+  "codeRepository": "https://github.com/MHJoy99/camscanner-mcp-hd-scanner",
+  "downloadUrl": "https://github.com/MHJoy99/camscanner-mcp-hd-scanner",
+  "installUrl": "https://github.com/MHJoy99/camscanner-mcp-hd-scanner#-quick-start-guide",
+  "image": "https://mhjoy99.github.io/camscanner-mcp-hd-scanner/og-image.png",
+  "author": {
+    "@type": "Person",
+    "name": "MHJoy99",
+    "url": "https://github.com/MHJoy99"
+  },
+  "featureList": [
+    "Automatic perspective rectification",
+    "Shadow removal and paper whitening (Magic Color)",
+    "Multi-page batch to one 300 DPI PDF",
+    "No watermark added by the local engine",
+    "Runs locally with OpenCV",
+    "CamScanner MCP setup for Claude Desktop, Kilo CLI and Cursor"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://mhjoy99.github.io/camscanner-mcp-hd-scanner/#faq",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is CamScanner MCP & HD Auto-Scanner?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is an open-source (MIT) Python project with two engines. A local OpenCV pipeline turns phone photos of paper into clean multi-page PDFs: it finds the page, flattens the perspective, estimates and removes shadows, whitens the paper and sharpens the ink. The repo also documents how to connect AI agents such as Claude Desktop, Kilo CLI and Cursor to the CamScanner MCP endpoint. It is an independent project and is not affiliated with CamScanner or INTSIG."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I scan phone photos to a PDF without a watermark?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Put your photos in a folder (JPG, PNG or WebP; the script also reads JPEG and BMP) and run python scripts/batch_scanner.py \"path/to/raw_photos\" \"output/Scanned_Document_HD.pdf\". The script processes the images in filename order, applies the Magic Color pipeline to each one and writes a single multi-page PDF. The local engine adds no stamp or watermark to the PDF it writes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it work offline? Are my documents uploaded?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The local engine runs entirely on your machine with OpenCV, NumPy and Pillow, and its code makes no network calls, so your photos are not uploaded. The remote CamScanner MCP endpoint is different: the integration guide notes that it needs internet access and a sign-in, and that documents sent to it travel to CamScanner's cloud."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the shadow removal and paper whitening work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It estimates the lighting first: a grayscale copy is dilated with an 11x11 kernel, which erases thin ink strokes, then smoothed with a 31x31 median filter. Each colour channel is then multiplied by 255 divided by that background estimate, which cancels uneven light and cast shadows. A tone curve maps values of 215 and above to pure white and deepens dark ink, and a 3x3 sharpening kernel finishes the page."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I connect it to Claude Desktop, Cursor or Kilo CLI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Add the CamScanner MCP endpoint, https://ai-tools.camscanner.com/mcp, to your client's MCP configuration. The README shows a Kilo CLI snippet (type remote, with an X-IS-AGENT: general header) and a Claude Desktop snippet. The MCP Integration Guide in the repo also covers Cursor and VS Code, the OAuth 2.0 sign-in and the camscanner-cli commands."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What can the CamScanner MCP endpoint do?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "According to the README it is a remote Model Context Protocol endpoint using Streamable HTTP that lets AI agents trigger OCR, PDF merging, document translation and format conversion through tool calls. The integration guide also lists table extraction and document search. These tools run on CamScanner's servers, not in this repo's Python engine."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a page or resolution limit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The README states there is no page cap and that the PDF is written at 300 DPI. In the code, every image found in the folder is processed and held in memory, then saved as one PDF with JPEG quality 95 and 300 DPI metadata, so very large batches are bounded by your available memory rather than by a built-in limit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How fast is it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The README reports about 3.2 seconds for 20 high-resolution pages on a CPU, and the Algorithm Deep Dive reports about 153 ms for one 12-megapixel page on its test machine. These are the author's own figures and will vary with your hardware."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which situations does it handle poorly?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Page detection looks for a four-corner outline covering at least 40% of the frame. If it finds a different outline it falls back to a bounding box, and if it finds none it trims a 2.5% border. White paper on a white desk is hard for edge detection, and the scripts do not flatten curved book pages or correct glossy reflections, because a plain perspective warp assumes a flat sheet."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it affiliated with CamScanner? What licence is it under?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. This is an independent project by MHJoy99 and is not affiliated with CamScanner or INTSIG. The README calls its filter \"CamScanner Magic Color\"; the repo reproduces a similar look with OpenCV, and CamScanner remains a trademark of its owner. The code is MIT licensed, free for personal, educational and commercial use."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "MHJoy99",
+      "item": "https://github.com/MHJoy99"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "CamScanner MCP & HD Auto-Scanner",
+      "item": "https://mhjoy99.github.io/camscanner-mcp-hd-scanner/"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<linearGradient id="gScan" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#10b981"/><stop offset="1" stop-color="#38bdf8"/></linearGradient>
+<linearGradient id="gTrail" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#34d399" stop-opacity=".38"/><stop offset="1" stop-color="#34d399" stop-opacity="0"/></linearGradient>
+<linearGradient id="gDesk" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#cdbd9f"/><stop offset="1" stop-color="#a08c70"/></linearGradient>
+<linearGradient id="gShadow" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#171c29" stop-opacity=".66"/><stop offset=".5" stop-color="#171c29" stop-opacity=".14"/><stop offset="1" stop-color="#171c29" stop-opacity="0"/></linearGradient>
+<radialGradient id="gLight" cx=".3" cy=".25" r=".95"><stop offset="0" stop-color="#f4efdc"/><stop offset=".55" stop-color="#c9c4b0"/><stop offset="1" stop-color="#7d7b6e"/></radialGradient>
+<filter id="fBlur" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="9"/></filter>
+<filter id="fHand" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="16"/></filter>
+<filter id="fSoft"><feGaussianBlur stdDeviation=".9"/></filter>
+<clipPath id="cPanel"><rect width="640" height="410" rx="18"/></clipPath>
+<clipPath id="cDirty"><rect class="dirty-clip" x="-142" y="-176" width="284" height="360"/></clipPath>
+<clipPath id="cPage"><rect x="-144" y="-176" width="288" height="352"/></clipPath>
+<g id="doc">
+<rect class="d-ink" x="-104" y="-148" width="128" height="13" rx="3"/>
+<rect class="d-soft" x="-104" y="-126" width="72" height="6" rx="3"/>
+<rect class="d-soft" x="-104" y="-100" width="208" height="6" rx="3"/>
+<rect class="d-soft" x="-104" y="-86" width="196" height="6" rx="3"/>
+<rect class="d-soft" x="-104" y="-72" width="208" height="6" rx="3"/>
+<rect class="d-soft" x="-104" y="-58" width="138" height="6" rx="3"/>
+<rect class="d-box" x="-104" y="-36" width="208" height="78" rx="7"/>
+<polyline class="d-a" points="-90,30 -62,12 -36,20 -6,-14 26,0 58,-22 90,-10"/>
+<rect class="d-soft" x="-104" y="62" width="208" height="6" rx="3"/>
+<rect class="d-soft" x="-104" y="76" width="198" height="6" rx="3"/>
+<rect class="d-soft" x="-104" y="90" width="120" height="6" rx="3"/>
+<circle class="d-b" cx="72" cy="132" r="23"/><circle class="d-b" cx="72" cy="132" r="15" style="stroke-width:2"/>
+<path class="d-c" d="M-104 140 c10 -24 18 8 28 -8 s14 -16 20 4 s14 10 26 -6 s12 -8 18 2"/></g>
+</defs></svg>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap bar">
+  <a class="brand" href="#top" aria-label="CamScanner MCP and HD Auto-Scanner, top of page"><svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="gl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#10b981"/><stop offset="1" stop-color="#0ea5e9"/></linearGradient></defs>
+<rect width="64" height="64" rx="15" fill="url(#gl)"/>
+<path d="M19 12h19l9 9v29a3 3 0 0 1-3 3H19a3 3 0 0 1-3-3V15a3 3 0 0 1 3-3z" fill="#fff"/>
+<path d="M38 12v9h9" fill="#d6f3e8"/>
+<rect x="22" y="27" width="20" height="3.4" rx="1.7" fill="#0f766e" opacity=".85"/><rect x="22" y="35" width="15" height="3.4" rx="1.7" fill="#0f766e" opacity=".55"/>
+<rect x="9" y="41" width="46" height="3.4" rx="1.7" fill="#fff" opacity=".95"/><rect x="9" y="41" width="46" height="3.4" rx="1.7" fill="none"/></svg><span>HD Auto-Scanner <small>for CamScanner MCP</small></span></a>
+  <nav class="main" aria-label="Primary"><a href="#features">Features</a><a href="#how">How it works</a><a href="#mcp">MCP</a><a href="#quickstart">Quick start</a><a href="#faq">FAQ</a><a class="gh" href="https://github.com/MHJoy99/camscanner-mcp-hd-scanner"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.76 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>GitHub</a></nav>
+</div></header>
+<main id="main">
+<div class="hero" id="top"><div class="wrap hero-grid">
+  <div>
+    <p class="eyebrow">CamScanner MCP &amp; HD Auto-Scanner</p>
+    <h1>Skewed phone photo in. <span class="grad">Crisp HD PDF out.</span></h1>
+    <p class="lead">A local OpenCV pipeline that finds the page, straightens it, removes shadows and whitens the paper, then bundles your photos into one <strong>300 DPI PDF</strong>. Plus the setup to let AI agents call the <strong>CamScanner MCP</strong> endpoint.</p>
+    <ul class="badges" aria-label="Project facts"><li><b>MIT</b> licence</li><li>Python <b>3.9+</b></li><li><b>MCP</b> ready</li><li><b>300 DPI</b> output</li></ul>
+    <div class="cta"><a class="btn primary" href="https://github.com/MHJoy99/camscanner-mcp-hd-scanner"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.76 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>Get it on GitHub</a><a class="btn ghost" href="https://github.com/MHJoy99/camscanner-mcp-hd-scanner#readme">Read the docs</a></div>
+    <p class="fine">Independent open-source project. Not affiliated with CamScanner / INTSIG.</p>
+  </div>
+  <figure class="stage" style="margin:0">
+    <svg class="hero-svg" viewBox="0 0 640 410" role="img" aria-labelledby="hv-t hv-d">
+<title id="hv-t">Animated scan: from skewed phone photo to a crisp PDF page</title>
+<desc id="hv-d">A tilted, shadowy phone photo of a document on a desk gets its four corners detected, is straightened to a flat page, then a scan line sweeps down removing the shadow and whitening the paper, ending as a clean 300 DPI PDF page.</desc>
+<g clip-path="url(#cPanel)">
+<rect class="hv-bg" width="640" height="410"/>
+<g class="scene">
+  <g class="desk">
+    <rect width="640" height="410" fill="url(#gDesk)"/>
+    <g fill="none" stroke="#8a7658" stroke-opacity=".35" stroke-width="2">
+      <path d="M0 52 C160 36 320 70 640 48"/><path d="M0 118 C200 100 380 140 640 112"/><path d="M0 300 C180 284 400 320 640 296"/><path d="M0 372 C220 356 420 392 640 366"/>
+    </g>
+    <circle cx="88" cy="70" r="30" fill="none" stroke="#7b5f45" stroke-opacity=".42" stroke-width="6"/>
+    <g transform="rotate(-24 560 330)"><rect x="470" y="322" width="190" height="16" rx="8" fill="#2f3b4a"/><rect x="470" y="322" width="38" height="16" rx="8" fill="#10b981"/></g>
+  </g>
+  <g transform="translate(320 205)">
+    <g class="pg">
+      <rect class="pg-shadow" x="-122" y="-160" width="262" height="352" rx="8" filter="url(#fBlur)"/>
+      <rect class="paper" x="-130" y="-175" width="260" height="350" rx="4"/>
+      <use href="#doc" class="clean"/>
+      <g clip-path="url(#cDirty)">
+        <g class="page-dirty">
+          <rect class="paper-dirty" x="-130" y="-175" width="260" height="350" rx="4"/>
+          <use href="#doc" class="dirty" filter="url(#fSoft)"/>
+          <rect x="-130" y="-175" width="260" height="350" fill="url(#gShadow)"/>
+          <ellipse class="hand hand-anim" cx="78" cy="-120" rx="86" ry="64" filter="url(#fHand)"/>
+        </g>
+      </g>
+      <g clip-path="url(#cPage)"><g class="scan">
+        <rect class="scan-trail" x="-144" y="-216" width="288" height="40"/>
+        <rect class="scan-line" x="-144" y="-178" width="288" height="3.5" rx="1.7"/>
+        <rect class="scan-glow" x="-144" y="-180" width="288" height="7" filter="url(#fSoft)"/>
+      </g></g>
+      <rect class="outline" x="-130" y="-175" width="260" height="350" rx="3"/>
+      <g class="brackets">
+        <path class="brk" d="M-140 -146 V-185 H-101"/><path class="brk" d="M140 -146 V-185 H101"/>
+        <path class="brk" d="M-140 146 V185 H-101"/><path class="brk" d="M140 146 V185 H101"/>
+      </g>
+    </g>
+  </g>
+  <g class="badge" transform="translate(468 308)">
+    <rect class="badge-bg" width="156" height="52" rx="14"/>
+    <path d="M18 14h13l7 7v17a2 2 0 0 1-2 2H18a2 2 0 0 1-2-2V16a2 2 0 0 1 2-2z" fill="#fff" fill-opacity=".95"/>
+    <path d="M23 29l4 4 8-9" fill="none" stroke="#059669" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <text class="badge-t" x="48" y="25">PDF page</text><text class="badge-s" x="48" y="40">300 DPI, no watermark</text>
+  </g>
+</g>
+</g>
+</svg>
+    <ol class="steps"><li>Detect the page</li><li>Straighten it</li><li>De-shadow and whiten</li><li>Export a PDF page</li></ol>
+    <figcaption class="sr-only">Looping animation of the scan pipeline: detect, straighten, de-shadow and whiten, export.</figcaption>
+  </figure>
+</div>
+<div class="wrap"><div class="stats rv" role="list">
+  <div class="stat" role="listitem"><b class="grad">5 stages</b><span>detect, light map, shadow division, tone curve, sharpen</span></div>
+  <div class="stat" role="listitem"><b class="grad">300 DPI</b><span>multi-page PDF written with Pillow, JPEG quality 95</span></div>
+  <div class="stat" role="listitem"><b class="grad">~3.2 s</b><span>for 20 high-res pages, as reported in the README</span></div>
+  <div class="stat" role="listitem"><b class="grad">0 uploads</b><span>the local engine makes no network calls</span></div>
+</div></div>
+</div>
+
+<section id="features" aria-labelledby="f-t"><div class="wrap">
+  <div class="sec-head rv"><span class="eyebrow">Features</span><h2 id="f-t">Everything a phone-photo scanner should do, on your machine</h2><p>Two engines in one repo: a free local Python pipeline for bulk scanning, and ready-made configuration for the remote CamScanner MCP endpoint.</p></div>
+  <div class="cards">
+<article class="card rv" style="--d:0s"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><h3>No watermark added</h3><p>The PDFs the local engine writes contain only your pages. No "Scanned with..." footer, no logo, no stamp.</p></article>
+<article class="card rv" style="--d:0.08s"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><h3>Magic Color filter</h3><p>A custom OpenCV filter isolates non-uniform shadow fields, estimates the illumination and turns dull gray paper into pure white (#FFFFFF) while keeping vivid ink colours.</p></article>
+<article class="card rv" style="--d:0.16s"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.13 1L6 16a2 2 0 0 0 2 2h15"/><path d="M1 6.13L16 6a2 2 0 0 1 2 2v15"/></svg></div><h3>Automatic perspective fix</h3><p>Canny edge detection and contour approximation find the page on a desk or table and warp skewed camera angles flat.</p></article>
+<article class="card rv" style="--d:0s"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div><h3>MCP native</h3><p>Connects Claude Desktop, Kilo CLI, Cursor and any MCP client to the remote Streamable HTTP endpoint at ai-tools.camscanner.com/mcp.</p></article>
+<article class="card rv" style="--d:0.08s"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><h3>Fast and offline</h3><p>Runs on your own CPU with no cloud round trip. The README reports about 3.2 seconds for 20 high-resolution pages.</p></article>
+<article class="card rv" style="--d:0.16s"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div><h3>Multi-page batch to one PDF</h3><p>Reads JPG, PNG or WebP photos from a folder, orders them by filename and bundles them into a single 300 DPI PDF.</p></article>
+  </div>
+</div></section>
+
+<section id="how" class="alt" aria-labelledby="h-t"><div class="wrap">
+  <div class="sec-head rv"><span class="eyebrow">How it works</span><h2 id="h-t">Five stages from crooked photo to flat white page</h2><p>Every number below comes straight from <code>scripts/batch_scanner.py</code>. For the full derivations see the <a href="https://github.com/MHJoy99/camscanner-mcp-hd-scanner/blob/main/docs/ALGORITHM_DEEP_DIVE.md">Algorithm Deep Dive</a>.</p></div>
+  <ol class="pipe">
+<li class="rv" style="--d:0s"><figure>
+<svg class="thumb" viewBox="-150 -190 300 380" role="img" aria-label="Stage 1: Detect and rectify"><rect x="-150" y="-190" width="300" height="380" class="thumb-desk"/><g transform="rotate(-8) skewX(-8) scale(.8)"><rect class="pg-shadow" x="-120" y="-158" width="262" height="352" rx="8" filter="url(#fBlur)"/><rect class="paper-dirty" x="-130" y="-175" width="260" height="350" rx="4"/><use href="#doc" class="dirty"/><rect x="-130" y="-175" width="260" height="350" fill="url(#gShadow)"/><rect class="outline" x="-130" y="-175" width="260" height="350" rx="3" style="opacity:1"/><g><path class="brk" style="opacity:1" d="M-140 -146 V-185 H-101"/><path class="brk" style="opacity:1" d="M140 -146 V-185 H101"/><path class="brk" style="opacity:1" d="M-140 146 V185 H-101"/><path class="brk" style="opacity:1" d="M140 146 V185 H101"/></g></g></svg>
+<span class="n">1</span><h3>Detect and rectify</h3><p>Shrink to 1000 px, blur, run Canny, close gaps, keep the largest four-corner outline (over 40% of the frame) and warp it flat.</p><code>Canny 30 / 120</code></figure></li>
+<li class="rv" style="--d:0.07s"><figure>
+<svg class="thumb" viewBox="-150 -190 300 380" role="img" aria-label="Stage 2: Estimate the light"><g transform="scale(.9)"><rect x="-130" y="-175" width="260" height="350" rx="4" class="thumb-light"/><rect x="-130" y="-175" width="260" height="350" rx="4" fill="none" stroke="#10b981" stroke-width="2.5" stroke-dasharray="8 7"/></g></svg>
+<span class="n">2</span><h3>Estimate the light</h3><p>Dilate with an 11x11 window to erase ink, then median-filter at 31x31. What is left is the lighting on blank paper.</p><code>dilate 11, median 31</code></figure></li>
+<li class="rv" style="--d:0.14s"><figure>
+<svg class="thumb" viewBox="-150 -190 300 380" role="img" aria-label="Stage 3: Divide out shadows"><g transform="scale(.9)"><rect class="paper" x="-130" y="-175" width="260" height="350" rx="4"/><use href="#doc" class="divided"/></g></svg>
+<span class="n">3</span><h3>Divide out shadows</h3><p>Scale every colour channel by 255 / background. Shadows and gradients cancel, inks keep their hue.</p><code>pixel x 255 / bg</code></figure></li>
+<li class="rv" style="--d:0.21000000000000002s"><figure>
+<svg class="thumb" viewBox="-150 -190 300 380" role="img" aria-label="Stage 4: Magic Color curve"><g transform="scale(.9)"><rect class="paper" x="-130" y="-175" width="260" height="350" rx="4"/><use href="#doc" class="clean"/></g></svg>
+<span class="n">4</span><h3>Magic Color curve</h3><p>Values from 215 up become pure white, ink under 40 is deepened, midtones are stretched.</p><code>215 to #FFFFFF</code></figure></li>
+<li class="rv" style="--d:0.28s"><figure>
+<svg class="thumb" viewBox="-150 -190 300 380" role="img" aria-label="Stage 5: Sharpen and export"><g transform="scale(.9)"><g transform="translate(14 -12) rotate(5)"><rect x="-130" y="-175" width="260" height="350" rx="4" fill="#fff" stroke="#c9d6d0" stroke-width="2"/></g><g transform="translate(7 -6) rotate(2.5)"><rect x="-130" y="-175" width="260" height="350" rx="4" fill="#fff" stroke="#c9d6d0" stroke-width="2"/></g><rect class="paper" x="-130" y="-175" width="260" height="350" rx="4"/><use href="#doc" class="clean"/><g transform="translate(84 148)"><rect x="-44" y="-18" width="88" height="36" rx="10" fill="url(#gScan)"/><text x="0" y="6" text-anchor="middle" fill="#fff" font-size="17" font-weight="800" font-family="system-ui,sans-serif">PDF</text></g></g></svg>
+<span class="n">5</span><h3>Sharpen and export</h3><p>A 3x3 unsharp kernel crisps the strokes, then Pillow saves one multi-page PDF.</p><code>JPEG q95, 300 DPI</code></figure></li>
+  </ol>
+  <div class="deep">
+    <article class="card rv"><h3>The Magic Color tone curve</h3><p class="note">A 256-entry lookup table. Ink below 40 scales by 0.75, 40 to 215 stretches onto 30 to 255, and anything 215 or brighter becomes pure white.</p><svg class="plot" viewBox="0 0 300 262" role="img" aria-label="Tone curve: input 0 to 39 is scaled by 0.75, 40 to 214 stretches onto 30 to 255, 215 and above maps to 255, pure white">
+<rect class="region" x="237" y="14" width="37" height="200"/>
+<path class="grid" d="M38 14H274 M75 214V14 M237 214V14"/>
+<path class="axis" d="M38 10V214H278"/>
+<path class="l-dash" d="M38 214L274 14" style="opacity:.55"/>
+<polyline class="l-em draw" pathLength="1" points="38,214 74.1,191.3 75,190.5 237,14 274,14"/>
+<circle class="dot" cx="75" cy="190.5" r="4.5"/><circle class="dot" cx="237" cy="14" r="4.5"/>
+<text class="lab" x="75" y="230" text-anchor="middle">40</text>
+<text class="lab" x="237" y="230" text-anchor="middle">215</text>
+<text class="lab" x="274" y="230" text-anchor="end">255</text><text class="lab" x="156.5" y="242" text-anchor="middle">input</text>
+<text class="lab" x="32" y="18" text-anchor="end">255</text>
+<text class="lab em" x="156.5" y="-8" text-anchor="middle">near-white clips to #FFFFFF</text>
+<text class="lab" x="99.1" y="127.7" transform="rotate(-27 99.1 127.7)" text-anchor="middle" style="font-size:9.5px">midtone ramp 40 to 215</text>
+</svg></article>
+    <article class="card rv" style="--d:.08s"><h3>Why shadows disappear</h3><p class="note">Paper brightness is lighting times reflectance. Divide by an estimate of the lighting and the shadow cancels.</p><svg class="plot" viewBox="0 0 300 262" role="img" aria-label="Brightness profile across a page: before, a shadow dips the paper level; after dividing by the estimated background the paper is flat and only ink remains dark">
+<text class="lab" x="20" y="13">Before: shadow drags paper down</text>
+<path class="axis" d="M20 24V104H290"/>
+<polyline class="l-sky draw" pathLength="1" points="20,35.9 21.9,36 23.9,36 25.8,36.1 27.7,36.1 29.6,36.2 31.6,36.3 33.5,36.3 35.4,36.4 37.4,36.4 39.3,36.5 41.2,36.6 43.1,36.6 45.1,95 47,95 48.9,95 50.9,36.9 52.8,36.9 54.7,37 56.6,37 58.6,37.1 60.5,37.2 62.4,37.2 64.4,37.3 66.3,37.4 68.2,95.1 70.1,95.1 72.1,95.1 74,95.1 75.9,37.7 77.9,37.7 79.8,37.8 81.7,37.8 83.6,37.9 85.6,38 87.5,38 89.4,38.1 91.4,38.1 93.3,38.2 95.2,38.3 97.1,38.3 99.1,95.3 101,95.3 102.9,95.3 104.9,38.6 106.8,38.7 108.7,38.8 110.6,38.9 112.6,39.1 114.5,39.2 116.4,39.4 118.4,39.5 120.3,39.7 122.2,40 124.1,40.3 126.1,40.6 128,40.9 129.9,41.4 131.9,41.9 133.8,42.4 135.7,43.1 137.6,43.9 139.6,44.7 141.5,45.7 143.4,46.7 145.4,96.5 147.3,96.7 149.2,96.9 151.1,52.4 153.1,54.1 155,56 156.9,58 158.9,60.1 160.8,62.3 162.7,64.6 164.6,67 166.6,69.4 168.5,99.7 170.4,100 172.4,100.4 174.3,100.7 176.2,81.2 178.1,83.3 180.1,85.2 182,86.9 183.9,88.4 185.9,89.7 187.8,90.7 189.7,91.4 191.6,91.8 193.6,91.8 195.5,91.6 197.4,91.1 199.4,90.3 201.3,89.2 203.2,87.9 205.1,86.3 207.1,84.6 209,82.6 210.9,80.6 212.9,78.4 214.8,76.1 216.7,73.8 218.6,71.5 220.6,69.2 222.5,66.9 224.4,64.7 226.4,62.6 228.3,98.2 230.2,98 232.1,97.7 234.1,55.3 236,53.8 237.9,52.4 239.9,51.1 241.8,50 243.7,49.1 245.6,48.2 247.6,47.4 249.5,46.8 251.4,46.2 253.4,45.8 255.3,96.2 257.2,96.1 259.1,96.1 261.1,44.6 263,44.4 264.9,44.3 266.9,44.2 268.8,44.1 270.7,44.1 272.6,44.1 274.6,44.1 276.5,44.1 278.4,44.1 280.4,44.1 282.3,44.2 284.2,44.2 286.1,44.3 288.1,44.3 290,44.4"/>
+<polyline class="l-dash" points="20,35.9 21.9,36 23.9,36 25.8,36.1 27.7,36.1 29.6,36.2 31.6,36.3 33.5,36.3 35.4,36.4 37.4,36.4 39.3,36.5 41.2,36.6 43.1,36.6 45.1,36.7 47,36.7 48.9,36.8 50.9,36.9 52.8,36.9 54.7,37 56.6,37 58.6,37.1 60.5,37.2 62.4,37.2 64.4,37.3 66.3,37.4 68.2,37.4 70.1,37.5 72.1,37.5 74,37.6 75.9,37.7 77.9,37.7 79.8,37.8 81.7,37.8 83.6,37.9 85.6,38 87.5,38 89.4,38.1 91.4,38.1 93.3,38.2 95.2,38.3 97.1,38.3 99.1,38.4 101,38.5 102.9,38.6 104.9,38.6 106.8,38.7 108.7,38.8 110.6,38.9 112.6,39.1 114.5,39.2 116.4,39.4 118.4,39.5 120.3,39.7 122.2,40 124.1,40.3 126.1,40.6 128,40.9 129.9,41.4 131.9,41.9 133.8,42.4 135.7,43.1 137.6,43.9 139.6,44.7 141.5,45.7 143.4,46.7 145.4,47.9 147.3,49.3 149.2,50.8 151.1,52.4 153.1,54.1 155,56 156.9,58 158.9,60.1 160.8,62.3 162.7,64.6 164.6,67 166.6,69.4 168.5,71.8 170.4,74.3 172.4,76.7 174.3,79 176.2,81.2 178.1,83.3 180.1,85.2 182,86.9 183.9,88.4 185.9,89.7 187.8,90.7 189.7,91.4 191.6,91.8 193.6,91.8 195.5,91.6 197.4,91.1 199.4,90.3 201.3,89.2 203.2,87.9 205.1,86.3 207.1,84.6 209,82.6 210.9,80.6 212.9,78.4 214.8,76.1 216.7,73.8 218.6,71.5 220.6,69.2 222.5,66.9 224.4,64.7 226.4,62.6 228.3,60.6 230.2,58.7 232.1,56.9 234.1,55.3 236,53.8 237.9,52.4 239.9,51.1 241.8,50 243.7,49.1 245.6,48.2 247.6,47.4 249.5,46.8 251.4,46.2 253.4,45.8 255.3,45.4 257.2,45 259.1,44.8 261.1,44.6 263,44.4 264.9,44.3 266.9,44.2 268.8,44.1 270.7,44.1 272.6,44.1 274.6,44.1 276.5,44.1 278.4,44.1 280.4,44.1 282.3,44.2 284.2,44.2 286.1,44.3 288.1,44.3 290,44.4"/>
+<text class="lab" x="288" y="120" text-anchor="end">dashed = estimated background</text>
+<text class="lab em" x="20" y="148">After: divide by the background</text>
+<path class="axis" d="M20 160V238H290"/>
+<polyline class="l-em draw" pathLength="1" points="20,170 21.9,170 23.9,170 25.8,170 27.7,170 29.6,170 31.6,170 33.5,170 35.4,170 37.4,170 39.3,170 41.2,170 43.1,170 45.1,228.9 47,228.9 48.9,228.9 50.9,170 52.8,170 54.7,170 56.6,170 58.6,170 60.5,170 62.4,170 64.4,170 66.3,170 68.2,228.9 70.1,228.9 72.1,228.9 74,228.9 75.9,170 77.9,170 79.8,170 81.7,170 83.6,170 85.6,170 87.5,170 89.4,170 91.4,170 93.3,170 95.2,170 97.1,170 99.1,228.9 101,228.9 102.9,228.9 104.9,170 106.8,170 108.7,170 110.6,170 112.6,170 114.5,170 116.4,170 118.4,170 120.3,170 122.2,170 124.1,170 126.1,170 128,170 129.9,170 131.9,170 133.8,170 135.7,170 137.6,170 139.6,170 141.5,170 143.4,170 145.4,228.9 147.3,228.9 149.2,228.9 151.1,170 153.1,170 155,170 156.9,170 158.9,170 160.8,170 162.7,170 164.6,170 166.6,170 168.5,228.9 170.4,228.9 172.4,228.9 174.3,228.9 176.2,170 178.1,170 180.1,170 182,170 183.9,170 185.9,170 187.8,170 189.7,170 191.6,170 193.6,170 195.5,170 197.4,170 199.4,170 201.3,170 203.2,170 205.1,170 207.1,170 209,170 210.9,170 212.9,170 214.8,170 216.7,170 218.6,170 220.6,170 222.5,170 224.4,170 226.4,170 228.3,228.9 230.2,228.9 232.1,228.9 234.1,170 236,170 237.9,170 239.9,170 241.8,170 243.7,170 245.6,170 247.6,170 249.5,170 251.4,170 253.4,170 255.3,228.9 257.2,228.9 259.1,228.9 261.1,170 263,170 264.9,170 266.9,170 268.8,170 270.7,170 272.6,170 274.6,170 276.5,170 278.4,170 280.4,170 282.3,170 284.2,170 286.1,170 288.1,170 290,170"/>
+<text class="lab" x="288" y="254" text-anchor="end">paper flat at 255, ink stays dark</text>
+</svg></article>
+    <article class="card rv" style="--d:.16s"><h3>The sharpening kernel</h3><p class="note">A 3x3 unsharp filter applied last. The weights sum to 1.0, so overall brightness does not shift; only edges get crisper.</p>
+      <div class="kernel" role="img" aria-label="3 by 3 kernel: 0, minus 0.3, 0; minus 0.3, 2.2, minus 0.3; 0, minus 0.3, 0"><span class="z">0</span><span>-0.3</span><span class="z">0</span><span>-0.3</span><span class="c">2.2</span><span>-0.3</span><span class="z">0</span><span>-0.3</span><span class="z">0</span></div>
+      <p class="note">Then Pillow saves every page into one PDF with <code>quality=95</code> and <code>dpi=(300, 300)</code>.</p></article>
+  </div>
+</div></section>
+
+<section id="mcp" class="mcp-sec" aria-labelledby="m-t"><div class="wrap">
+  <div class="sec-head rv"><span class="eyebrow">The MCP angle</span><h2 id="m-t">Let your AI agent call the scanner</h2><p>The README describes the CamScanner MCP as an official remote Model Context Protocol endpoint over Streamable HTTP. It lets agents like Claude and Kilo trigger OCR, PDF merging, document translation and format conversion through tool calls. This repo shows how to wire it up, and keeps a free local engine beside it.</p></div>
+  <div class="diagram rv"><svg class="mcp" viewBox="0 0 920 410" role="img" aria-labelledby="mcp-t mcp-d">
+<title id="mcp-t">How AI agents reach the CamScanner MCP endpoint, and the separate local engine</title>
+<desc id="mcp-d">Top lane: MCP clients such as Claude Desktop, Cursor and Kilo CLI call the remote CamScanner MCP endpoint over Streamable HTTP, which exposes tools such as OCR, PDF merging, translation and format conversion. Bottom lane: the local Python engine turns phone photos into a 300 DPI PDF without any network. An optional dashed link sends that PDF to MCP OCR.</desc>
+<rect class="lane" x="0.5" y="0.5" width="919" height="232" rx="20"/>
+<text class="cap" x="24" y="30">REMOTE: CAMSCANNER MCP ENDPOINT</text>
+<text class="t2" x="896" y="30" text-anchor="end">needs internet and a sign-in</text>
+<rect class="lane" x="0.5" y="252.5" width="919" height="157" rx="20"/>
+<text class="cap" x="24" y="282">LOCAL: PYTHON ENGINE (OPENCV)</text>
+<path class="wire" d="M214 78 C282 78 282 132 350 132"/><path class="wire" d="M214 134 C282 134 282 132 350 132"/><path class="wire" d="M214 190 C282 190 282 132 350 132"/><path class="wire" d="M570 132 C638 132 638 67 706 67"/><path class="wire" d="M570 132 C638 132 638 111 706 111"/><path class="wire" d="M570 132 C638 132 638 155 706 155"/><path class="wire" d="M570 132 C638 132 638 199 706 199"/><path class="wire" d="M254 341H345"/><path class="wire" d="M575 341H666"/>
+<path class="wire dash" d="M781 306V226"/>
+<text class="t2" x="768" y="270" text-anchor="end">optional: send the PDF to MCP OCR</text>
+<rect class="node" x="24" y="56" width="190" height="44" rx="12"/><text class="t" x="42" y="76">Claude Desktop</text><text class="t2" x="42" y="91">MCP client</text><rect class="node" x="24" y="112" width="190" height="44" rx="12"/><text class="t" x="42" y="132">Cursor</text><text class="t2" x="42" y="147">MCP client</text><rect class="node" x="24" y="168" width="190" height="44" rx="12"/><text class="t" x="42" y="188">Kilo CLI</text><text class="t2" x="42" y="203">MCP client</text><rect class="node" x="706" y="48" width="190" height="38" rx="11"/><text class="t" x="724" y="72">OCR</text><rect class="node" x="706" y="92" width="190" height="38" rx="11"/><text class="t" x="724" y="116">PDF merging</text><rect class="node" x="706" y="136" width="190" height="38" rx="11"/><text class="t" x="724" y="160">Translation</text><rect class="node" x="706" y="180" width="190" height="38" rx="11"/><text class="t" x="724" y="204">Format conversion</text>
+<rect class="node hot" x="350" y="84" width="220" height="96" rx="16"/>
+<text class="t" x="460" y="116" text-anchor="middle">MCP endpoint</text>
+<text class="t2" x="460" y="136" text-anchor="middle">Streamable HTTP</text>
+<text class="mono" x="460" y="160" text-anchor="middle">ai-tools.camscanner.com/mcp</text>
+<rect class="node" x="24" y="306" width="230" height="70" rx="14"/><text class="t" x="42" y="337">Phone photos</text><text class="t2" x="42" y="357">JPG, PNG or WebP in a folder</text>
+<rect class="node hot" x="345" y="306" width="230" height="70" rx="14"/><text class="t" x="363" y="337">batch_scanner.py</text><text class="t2" x="363" y="357">OpenCV, NumPy, Pillow. Offline</text>
+<rect class="node" x="666" y="306" width="230" height="70" rx="14"/><text class="t" x="684" y="337">One HD PDF</text><text class="t2" x="684" y="357">300 DPI, multi-page</text>
+<circle class="pk " r="5" opacity="0"><animateMotion dur="2.6s" begin="0s" repeatCount="indefinite" path="M214 78 C282 78 282 132 350 132"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.12;.88;1" dur="2.6s" begin="0s" repeatCount="indefinite"/></circle><circle class="pk s" r="5" opacity="0"><animateMotion dur="2.6s" begin="1.5s" repeatCount="indefinite" path="M350 132 C282 132 282 78 214 78"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.12;.88;1" dur="2.6s" begin="1.5s" repeatCount="indefinite"/></circle><circle class="pk " r="5" opacity="0"><animateMotion dur="2.6s" begin="0.55s" repeatCount="indefinite" path="M214 134 C282 134 282 132 350 132"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.12;.88;1" dur="2.6s" begin="0.55s" repeatCount="indefinite"/></circle><circle class="pk s" r="5" opacity="0"><animateMotion dur="2.6s" begin="2.05s" repeatCount="indefinite" path="M350 132 C282 132 282 134 214 134"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.12;.88;1" dur="2.6s" begin="2.05s" repeatCount="indefinite"/></circle><circle class="pk " r="5" opacity="0"><animateMotion dur="2.6s" begin="1.1s" repeatCount="indefinite" path="M214 190 C282 190 282 132 350 132"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.12;.88;1" dur="2.6s" begin="1.1s" repeatCount="indefinite"/></circle><circle class="pk s" r="5" opacity="0"><animateMotion dur="2.6s" begin="2.6s" repeatCount="indefinite" path="M350 132 C282 132 282 190 214 190"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.12;.88;1" dur="2.6s" begin="2.6s" repeatCount="indefinite"/></circle><circle class="pk " r="5" opacity="0"><animateMotion dur="2.4s" begin="0.9s" repeatCount="indefinite" path="M570 132 C638 132 638 67 706 67"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.12;.88;1" dur="2.4s" begin="0.9s" repeatCount="indefinite"/></circle><circle class="pk s" r="5" opacity="0"><animateMotion dur="2.4s" begin="2.2s" repeatCount="indefinite" path="M706 67 C638 67 638 132 570 132"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.12;.88;1" dur="2.4s" begin="2.2s" repeatCount="indefinite"/></circle><circle class="pk " r="5" opacity="0"><animateMotion dur="2.4s" begin="1.4s" repeatCount="indefinite" path="M570 132 C638 132 638 111 706 111"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.12;.88;1" dur="2.4s" begin="1.4s" repeatCount="indefinite"/></circle><circle class="pk s" r="5" opacity="0"><animateMotion dur="2.4s" begin="2.7s" repeatCount="indefinite" path="M706 111 C638 111 638 132 570 132"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.12;.88;1" dur="2.4s" begin="2.7s" repeatCount="indefinite"/></circle><circle class="pk " r="5" opacity="0"><animateMotion dur="2.4s" begin="1.9s" repeatCount="indefinite" path="M570 132 C638 132 638 155 706 155"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.12;.88;1" dur="2.4s" begin="1.9s" repeatCount="indefinite"/></circle><circle class="pk s" r="5" opacity="0"><animateMotion dur="2.4s" begin="3.2s" repeatCount="indefinite" path="M706 155 C638 155 638 132 570 132"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.12;.88;1" dur="2.4s" begin="3.2s" repeatCount="indefinite"/></circle><circle class="pk " r="5" opacity="0"><animateMotion dur="2.4s" begin="2.4s" repeatCount="indefinite" path="M570 132 C638 132 638 199 706 199"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.12;.88;1" dur="2.4s" begin="2.4s" repeatCount="indefinite"/></circle><circle class="pk s" r="5" opacity="0"><animateMotion dur="2.4s" begin="3.7s" repeatCount="indefinite" path="M706 199 C638 199 638 132 570 132"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.12;.88;1" dur="2.4s" begin="3.7s" repeatCount="indefinite"/></circle><circle class="pk " r="5" opacity="0"><animateMotion dur="2.2s" begin="0s" repeatCount="indefinite" path="M254 341H345"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.12;.88;1" dur="2.2s" begin="0s" repeatCount="indefinite"/></circle><circle class="pk " r="5" opacity="0"><animateMotion dur="2.2s" begin="1.1s" repeatCount="indefinite" path="M575 341H666"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.12;.88;1" dur="2.2s" begin="1.1s" repeatCount="indefinite"/></circle><circle class="pk s" r="5" opacity="0"><animateMotion dur="2.6s" begin="0.4s" repeatCount="indefinite" path="M781 306V226"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.12;.88;1" dur="2.6s" begin="0.4s" repeatCount="indefinite"/></circle>
+</svg></div>
+  <h3 class="sub">Add it to your MCP client</h3>
+  <p class="muted">Snippets copied from the README. Endpoint: <code>https://ai-tools.camscanner.com/mcp</code></p>
+  <div class="two">
+    <div class="rv"><div class="codeblock"><div class="hd"><i></i><span>Kilo CLI: kilo.json or kilo.jsonc</span><button type="button" hidden data-copy="{&#10;  &quot;mcp&quot;: {&#10;    &quot;camscanner-mcp&quot;: {&#10;      &quot;type&quot;: &quot;remote&quot;,&#10;      &quot;url&quot;: &quot;https://ai-tools.camscanner.com/mcp&quot;,&#10;      &quot;headers&quot;: {&#10;        &quot;X-IS-AGENT&quot;: &quot;general&quot;&#10;      },&#10;      &quot;enabled&quot;: true&#10;    }&#10;  }&#10;}">Copy</button></div><pre><code>{
+  <span class="k">"mcp"</span>: {
+    <span class="k">"camscanner-mcp"</span>: {
+      <span class="k">"type"</span>: <span class="s">"remote"</span>,
+      <span class="k">"url"</span>: <span class="s">"https://ai-tools.camscanner.com/mcp"</span>,
+      <span class="k">"headers"</span>: {
+        <span class="k">"X-IS-AGENT"</span>: <span class="s">"general"</span>
+      },
+      <span class="k">"enabled"</span>: true
+    }
+  }
+}</code></pre></div></div>
+    <div class="rv" style="--d:.08s"><div class="codeblock"><div class="hd"><i></i><span>Claude Desktop: claude_desktop_config.json</span><button type="button" hidden data-copy="{&#10;  &quot;mcpServers&quot;: {&#10;    &quot;camscanner&quot;: {&#10;      &quot;url&quot;: &quot;https://ai-tools.camscanner.com/mcp&quot;,&#10;      &quot;headers&quot;: {&#10;        &quot;X-IS-AGENT&quot;: &quot;general&quot;&#10;      }&#10;    }&#10;  }&#10;}">Copy</button></div><pre><code>{
+  <span class="k">"mcpServers"</span>: {
+    <span class="k">"camscanner"</span>: {
+      <span class="k">"url"</span>: <span class="s">"https://ai-tools.camscanner.com/mcp"</span>,
+      <span class="k">"headers"</span>: {
+        <span class="k">"X-IS-AGENT"</span>: <span class="s">"general"</span>
+      }
+    }
+  }
+}</code></pre></div></div>
+  </div>
+  <div class="callout rv"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><p><strong>Sign-in and Cursor setup.</strong> The repo's <a href="https://github.com/MHJoy99/camscanner-mcp-hd-scanner/blob/main/docs/MCP_INTEGRATION_GUIDE.md">MCP Integration Guide</a> covers the OAuth 2.0 sign-in, Cursor and VS Code configuration, and the <code>camscanner-cli</code> commands. The remote endpoint is CamScanner's own service, so its terms and any account or quota limits apply.</p></div>
+
+  <h3 class="sub">Local engine or remote MCP?</h3>
+  <p class="muted">Summarised from the guide's comparison. Use whichever fits, or both.</p>
+  <div class="tablewrap rv"><table class="params">
+    <thead><tr><th></th><th>Local Python engine</th><th>Remote CamScanner MCP</th></tr></thead>
+    <tbody>
+      <tr><td>Runs on</td><td>Your CPU (OpenCV, NumPy, Pillow)</td><td>CamScanner's hosted service</td></tr>
+      <tr><td>Network</td><td>None needed; photos stay on your machine</td><td>Internet and sign-in; documents travel to the cloud</td></tr>
+      <tr><td>Does</td><td>Edge detection, perspective fix, shadow removal, Magic Color, multi-page PDF</td><td>OCR, PDF merging, translation, format conversion (README); table extraction and search (guide)</td></tr>
+      <tr><td>OCR</td><td>Not included</td><td>Yes</td></tr>
+      <tr><td>Cost</td><td>Free, MIT</td><td>Needs a CamScanner account; the guide notes a Pro plan or API quota may apply</td></tr>
+      <tr><td>Best for</td><td>Bulk offline digitising of photo dumps</td><td>Letting agents read, transcribe and search documents</td></tr>
+    </tbody></table></div>
+  <h3 class="sub">Use both</h3>
+  <p class="muted">The guide's suggested workflow: scan locally first, then hand the finished PDF to the remote OCR.</p>
+  <div class="rv"><div class="codeblock"><div class="hd"><i></i><span>both engines, from the MCP guide</span><button type="button" hidden data-copy="# Step 1: Process local camera captures using Python&#10;python scripts/batch_scanner.py &quot;path/to/raw_photos&quot; &quot;output/Scanned_Document_HD.pdf&quot;&#10;&#10;# Step 2: Use CamScanner remote OCR via CLI or Agent&#10;camscanner-cli image ocr --input &quot;output/Scanned_Document_HD.pdf&quot; --format markdown --output &quot;output/Document_Transcript.md&quot;">Copy</button></div><pre><code><span class="c"># Step 1: Process local camera captures using Python</span>
+python scripts/batch_scanner.py <span class="s">"path/to/raw_photos"</span> <span class="s">"output/Scanned_Document_HD.pdf"</span>
+
+<span class="c"># Step 2: Use CamScanner remote OCR via CLI or Agent</span>
+camscanner-cli image ocr --input <span class="s">"output/Scanned_Document_HD.pdf"</span> --format markdown --output <span class="s">"output/Document_Transcript.md"</span></code></pre></div></div>
+</div></section>
+
+<section id="quickstart" class="alt" aria-labelledby="q-t"><div class="wrap">
+  <div class="sec-head rv"><span class="eyebrow">Quick start</span><h2 id="q-t">From clone to PDF in two commands</h2><p>Commands are copied from the README. You need Python 3.9 or newer.</p></div>
+  <div class="qs">
+    <div class="step rv"><h3><b>1</b>Install</h3><div class="codeblock"><div class="hd"><i></i><span>terminal</span><button type="button" hidden data-copy="# Clone the repository&#10;git clone https://github.com/MHJoy99/camscanner-mcp-hd-scanner.git&#10;cd camscanner-mcp-hd-scanner&#10;&#10;# Install Python requirements&#10;pip install opencv-python pillow numpy pypdf&#10;&#10;# (Optional) Install official CamScanner CLI&#10;npm install -g camscanner-cli">Copy</button></div><pre><code><span class="c"># Clone the repository</span>
+git clone https://github.com/MHJoy99/camscanner-mcp-hd-scanner.git
+cd camscanner-mcp-hd-scanner
+
+<span class="c"># Install Python requirements</span>
+pip install opencv-python pillow numpy pypdf
+
+<span class="c"># (Optional) Install official CamScanner CLI</span>
+npm install -g camscanner-cli</code></pre></div></div>
+    <div class="step rv" style="--d:.08s"><h3><b>2</b>Scan a folder of photos</h3><div class="codeblock"><div class="hd"><i></i><span>terminal</span><button type="button" hidden data-copy="python scripts/batch_scanner.py &quot;path/to/raw_photos&quot; &quot;output/Scanned_Document_HD.pdf&quot;">Copy</button></div><pre><code>python scripts/batch_scanner.py <span class="s">"path/to/raw_photos"</span> <span class="s">"output/Scanned_Document_HD.pdf"</span></code></pre></div>
+      <ol><li>Finds the page contour and removes the table edges.</li><li>Estimates ambient light and eliminates shadows.</li><li>Applies the Magic Color tone curve.</li><li>Sharpens with an unsharp kernel.</li><li>Exports a 300 DPI multi-page PDF with no watermark.</li></ol></div>
+  </div>
+  <div class="callout rv"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><p><strong>Good to know.</strong> Pass both arguments to <code>batch_scanner.py</code>. A lighter script, <code>scan_to_pdf.py</code>, processes the images sitting next to it and writes <code>Scanned_HD_Output.pdf</code>; run it as <code>python scan_to_pdf.py bw</code> for a black-and-white filter (default is <code>magic_color</code>). Both are read from the repo's code, not the README.</p></div>
+</div></section>
+
+<section id="faq" aria-labelledby="faq-t"><div class="wrap">
+  <div class="sec-head rv"><span class="eyebrow">FAQ</span><h2 id="faq-t">Questions people ask</h2><p>Answers are taken from the README, the docs folder and the code.</p></div>
+  <div class="faq">
+<details class="rv" open><summary><h3>What is CamScanner MCP &amp; HD Auto-Scanner?</h3></summary><div class="ans"><p>It is an open-source (MIT) Python project with two engines. A local OpenCV pipeline turns phone photos of paper into clean multi-page PDFs: it finds the page, flattens the perspective, estimates and removes shadows, whitens the paper and sharpens the ink. The repo also documents how to connect AI agents such as Claude Desktop, Kilo CLI and Cursor to the CamScanner MCP endpoint. It is an independent project and is not affiliated with CamScanner or INTSIG.</p></div></details>
+<details class="rv"><summary><h3>How do I scan phone photos to a PDF without a watermark?</h3></summary><div class="ans"><p>Put your photos in a folder (JPG, PNG or WebP; the script also reads JPEG and BMP) and run <code>python scripts/batch_scanner.py "path/to/raw_photos" "output/Scanned_Document_HD.pdf"</code>. The script processes the images in filename order, applies the Magic Color pipeline to each one and writes a single multi-page PDF. The local engine adds no stamp or watermark to the PDF it writes.</p></div></details>
+<details class="rv"><summary><h3>Does it work offline? Are my documents uploaded?</h3></summary><div class="ans"><p>The local engine runs entirely on your machine with OpenCV, NumPy and Pillow, and its code makes no network calls, so your photos are not uploaded. The remote CamScanner MCP endpoint is different: the integration guide notes that it needs internet access and a sign-in, and that documents sent to it travel to CamScanner's cloud.</p></div></details>
+<details class="rv"><summary><h3>How does the shadow removal and paper whitening work?</h3></summary><div class="ans"><p>It estimates the lighting first: a grayscale copy is dilated with an 11x11 kernel, which erases thin ink strokes, then smoothed with a 31x31 median filter. Each colour channel is then multiplied by 255 divided by that background estimate, which cancels uneven light and cast shadows. A tone curve maps values of 215 and above to pure white and deepens dark ink, and a 3x3 sharpening kernel finishes the page.</p></div></details>
+<details class="rv"><summary><h3>How do I connect it to Claude Desktop, Cursor or Kilo CLI?</h3></summary><div class="ans"><p>Add the CamScanner MCP endpoint, https://ai-tools.camscanner.com/mcp, to your client's MCP configuration. The README shows a Kilo CLI snippet (type remote, with an X-IS-AGENT: general header) and a Claude Desktop snippet. The MCP Integration Guide in the repo also covers Cursor and VS Code, the OAuth 2.0 sign-in and the camscanner-cli commands.</p></div></details>
+<details class="rv"><summary><h3>What can the CamScanner MCP endpoint do?</h3></summary><div class="ans"><p>According to the README it is a remote Model Context Protocol endpoint using Streamable HTTP that lets AI agents trigger OCR, PDF merging, document translation and format conversion through tool calls. The integration guide also lists table extraction and document search. These tools run on CamScanner's servers, not in this repo's Python engine.</p></div></details>
+<details class="rv"><summary><h3>Is there a page or resolution limit?</h3></summary><div class="ans"><p>The README states there is no page cap and that the PDF is written at 300 DPI. In the code, every image found in the folder is processed and held in memory, then saved as one PDF with JPEG quality 95 and 300 DPI metadata, so very large batches are bounded by your available memory rather than by a built-in limit.</p></div></details>
+<details class="rv"><summary><h3>How fast is it?</h3></summary><div class="ans"><p>The README reports about 3.2 seconds for 20 high-resolution pages on a CPU, and the Algorithm Deep Dive reports about 153 ms for one 12-megapixel page on its test machine. These are the author's own figures and will vary with your hardware.</p></div></details>
+<details class="rv"><summary><h3>Which situations does it handle poorly?</h3></summary><div class="ans"><p>Page detection looks for a four-corner outline covering at least 40% of the frame. If it finds a different outline it falls back to a bounding box, and if it finds none it trims a 2.5% border. White paper on a white desk is hard for edge detection, and the scripts do not flatten curved book pages or correct glossy reflections, because a plain perspective warp assumes a flat sheet.</p></div></details>
+<details class="rv"><summary><h3>Is it affiliated with CamScanner? What licence is it under?</h3></summary><div class="ans"><p>No. This is an independent project by MHJoy99 and is not affiliated with CamScanner or INTSIG. The README calls its filter "CamScanner Magic Color"; the repo reproduces a similar look with OpenCV, and CamScanner remains a trademark of its owner. The code is MIT licensed, free for personal, educational and commercial use.</p></div></details>
+  </div>
+</div></section>
+
+<section aria-labelledby="more-t" style="padding-top:20px"><div class="wrap">
+  <div class="sec-head rv"><span class="eyebrow">More by MHJoy99</span><h2 id="more-t" style="font-size:1.6rem">Other open-source projects</h2></div>
+  <div class="more">
+<a class="rv" href="https://mhjoy99.github.io/CCUsageX/"><span class="mk" aria-hidden="true">C</span><span><b>CCUsageX</b><span class="d">Claude Code usage dashboard</span></span></a>
+<a class="rv" href="https://mhjoy99.github.io/joyvoice/"><span class="mk" aria-hidden="true">j</span><span><b>joyvoice</b><span class="d">Windows voice typing with Gemini</span></span></a>
+<a class="rv" href="https://mhjoy99.github.io/ZipStream-Hub/"><span class="mk" aria-hidden="true">Z</span><span><b>ZipStream-Hub</b><span class="d">Stream video from remote ZIPs</span></span></a>
+<a class="rv" href="https://mhjoy99.github.io/speedy-bonding/"><span class="mk" aria-hidden="true">S</span><span><b>speedy-bonding</b><span class="d">SOCKS5 load balancer for IDM</span></span></a>
+  </div>
+</div></section>
+
+<section aria-labelledby="final-t" style="padding-top:20px"><div class="wrap">
+  <div class="band rv">
+    <h2 id="final-t">Scan smarter, keep your pages</h2>
+    <p>Grab the Python engine, scan a folder of photos into a clean PDF, and wire your AI agent to the CamScanner MCP when you want OCR.</p>
+    <div class="cta"><a class="btn primary" href="https://github.com/MHJoy99/camscanner-mcp-hd-scanner">Get it on GitHub</a><a class="btn ghost" href="https://github.com/MHJoy99/camscanner-mcp-hd-scanner/blob/main/docs/MCP_INTEGRATION_GUIDE.md">MCP integration guide</a></div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div>
+    <p><strong>CamScanner MCP &amp; HD Auto-Scanner</strong>, a free local document scanner for phone photos.</p>
+    <p>MIT licensed. Built by <a href="https://github.com/MHJoy99">MHJoy99</a>.</p>
+    <p>Not affiliated with CamScanner / INTSIG. CamScanner is a trademark of its owner. If you use the remote CamScanner MCP, follow CamScanner's own terms.</p>
+    <p>This website uses cookieless Cloudflare Web Analytics.</p>
+  </div>
+  <nav aria-label="Footer"><ul>
+    <li><a href="https://github.com/MHJoy99/camscanner-mcp-hd-scanner">GitHub repository</a></li>
+    <li><a href="https://github.com/MHJoy99/camscanner-mcp-hd-scanner/blob/main/LICENSE">MIT license</a></li>
+    <li><a href="https://github.com/MHJoy99/camscanner-mcp-hd-scanner/issues">Report an issue</a></li>
+    <li><a href="https://github.com/MHJoy99/camscanner-mcp-hd-scanner/blob/main/docs/MCP_INTEGRATION_GUIDE.md">MCP integration guide</a></li>
+    <li><a href="https://github.com/MHJoy99/camscanner-mcp-hd-scanner/blob/main/docs/ALGORITHM_DEEP_DIVE.md">Algorithm deep dive</a></li>
+    <li><a href="llms.txt">llms.txt</a></li>
+  </ul></nav>
+</div></footer>
+<script src="site.js" defer></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "a2f7f3d589ae4c8688a646d54918b0e7"}'></script>
+</body>
+</html>

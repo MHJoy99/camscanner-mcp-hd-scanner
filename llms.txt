@@ -1,0 +1,21 @@
+# CamScanner MCP & HD Auto-Scanner
+
+> Free, open-source (MIT) Python document scanner that turns phone photos of paper into clean multi-page 300 DPI PDFs using OpenCV (perspective fix, shadow removal, paper whitening, sharpening), plus ready-made configuration for connecting AI agents (Claude Desktop, Kilo CLI, Cursor) to the CamScanner MCP endpoint. Independent project, not affiliated with CamScanner / INTSIG.
+
+Key facts: local engine runs offline on your CPU; Python 3.9+; dependencies opencv-python, pillow, numpy, pypdf; main script scripts/batch_scanner.py; remote MCP endpoint https://ai-tools.camscanner.com/mcp (Streamable HTTP, CamScanner's own service).
+
+## Project
+- [Website](https://mhjoy99.github.io/camscanner-mcp-hd-scanner/): overview, animated pipeline, MCP setup, FAQ
+- [GitHub repository](https://github.com/MHJoy99/camscanner-mcp-hd-scanner): source code, README and issues
+- [README](https://github.com/MHJoy99/camscanner-mcp-hd-scanner#readme): quick start and MCP snippets
+- [License (MIT)](https://github.com/MHJoy99/camscanner-mcp-hd-scanner/blob/main/LICENSE)
+
+## Documentation
+- [MCP Integration Guide](https://github.com/MHJoy99/camscanner-mcp-hd-scanner/blob/main/docs/MCP_INTEGRATION_GUIDE.md): client configuration, OAuth sign-in, camscanner-cli commands, local vs remote comparison
+- [Algorithm Deep Dive](https://github.com/MHJoy99/camscanner-mcp-hd-scanner/blob/main/docs/ALGORITHM_DEEP_DIVE.md): the five-stage image pipeline in detail
+- [SEO and AEO strategy notes](https://github.com/MHJoy99/camscanner-mcp-hd-scanner/blob/main/docs/SEO_AEO_STRATEGY.md)
+
+## Optional
+- [Full plain-text explanation](https://mhjoy99.github.io/camscanner-mcp-hd-scanner/llms-full.txt)
+- [Report an issue](https://github.com/MHJoy99/camscanner-mcp-hd-scanner/issues)
+- [Author: MHJoy99](https://github.com/MHJoy99)
